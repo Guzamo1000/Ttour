@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page T.Travel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script defer src="../static/images/image.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Tiêu đề -->
+
+    <header id="header">
+        <div class="grid">
+            <div class="header__container">
+                <ul class="header__navbar">
+                    <li class="header__navbar-item">
+                        <button class="header__navbar-button header__navbar-button--active js-header-button">
+                            <i class="header__icon fa-solid fa-bars"></i>
+                        </button>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="" class="header__navbar-link">
+                            <h1 class="header__navbar-logo">
+                                T.Travel
+                            </h1>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="header__navbar">
+                    <li class="header__navbar-item">
+                        <a href="" class="header__navbar-link mr-40">
+                            <i class="header__icon fa-solid fa-circle-question"></i>
+                            <span class="header__navbar-title">Hướng dẫn</span>
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="" class="header__navbar-link mr-40">
+                            <i class="header__icon fa-solid fa-circle-question"></i>
+                            <span class="header__navbar-title">Đặt trước</span>
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <div class="header__navbar-user">
+                            <div class="header__navbar-title">
+                                <i class="header__icon fa-solid fa-user"></i>
+                                Tài khoản
+                            </div>
+                            <ul class="header__navbar-user-list">
+                                <li class="header__navbar-user-item">
+                                    <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Phần thân trang web -->
+    <div id="admin-manage">
+        <div class="grid">
+            <h1 class="admin-manage__title">Quản lý Khách sạn</h1>
+            <div class="admin-manage__action">
+                <div class="admin-manage__select">
+                    <span class="admin-manage__select-title">
+                        Sắp xếp theo:
+                    </span>
+                    <select class="admin-manage__selection" placeholder="Sắp xếp theo tên">
+                        <option value="name">Tên</option>
+                        <option value="quantity">Địa điểm</option>
+                    </select>
+                </div>
+                <button class="admin-manage__action-button">Thêm mới</button>
+            </div>
+            <table class="table table-striped table-inverse table-responsive text-justify">
+                <thead class="thead-inverse thead-dark text-white">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên khách sạn</th>
+                        <th>Miêu tả</th>
+                        <th>Địa điểm</th>
+                        <th>Gía phòng</th>
+                        <th>Chức năng</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Nguyễn Công Hậu</td>
+                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
+                            <td>0123456789</td>
+                            <td>3</td>
+                            <td>
+                                <a href="admin/user/view/{$user.id}" class="btn btn-primary btn-warning">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Nguyễn Công Hậu</td>
+                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
+                            <td>0123456789</td>
+                            <td>3</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-warning">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a href="" class="btn btn-primary btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <div class="admin-manage__detail">
+                <h3 class="admin-manage__detail-title">Thêm mới Khách sạn</h3>
+                <div class="admin-manage__info">
+                    <div class="admin-manage__info-item-wrapper">
+                        <div class="admin-manage__info-item">
+                            <span class="admin-manage__info-label">Tên khách sạn:</span>
+                            <input type="text" class="admin-manage__info-input"
+                                placeholder="Nhập tên khách sạn"></input>
+                        </div>
+                        <div class="admin-manage__info-item">
+                            <span class="admin-manage__info-label">Địa điểm:</span>
+                            <input type="text" class="admin-manage__info-input"
+                                placeholder="Nhập địa điểm khách sạn"></input>
+                        </div>
+                        <div class="admin-manage__info-item">
+                            <span class="admin-manage__info-label">Giá phòng khách sạn:</span>
+                            <input type="text" class="admin-manage__info-input"
+                                placeholder="Nhập giá phòng khách sạn"></input>
+                        </div>
+                        <div class="admin-manage__info-item">
+                            <span class="admin-manage__info-label">Miêu tả:</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-manage__editor">
+
+                </div>
+                <br><button class="admin-manage__action-button">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+            ['link', 'image'],
+        ];
+        var options = {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        }
+        var editor = new Quill('.admin-manage__editor', options);
+    </script>
+    <!-- Thông tin màu xanh cuối trang -->
+    <footer>
+        <div class="footer-link__wrapper">
+            <div class="footer-social-area">
+                <a href="https://youtube.com" class="footer-social__icon footer-social__link">
+                    <i class="fa-brands fa-facebook-square"></i>
+                </a>
+                <a href="" class="footer-social__icon footer-social__link">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="" class="footer-social__icon footer-social__link">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="" class="footer-social__icon footer-social__link">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div class="footer-social__support">
+                <a href="" class="footer-social__link">
+                    Chính sách - Bảo mật
+                </a>
+                <a href="" class="footer-social__link">
+                    Trợ giúp
+                </a>
+                <a href="" class="footer-social__link">
+                    Chúng tôi
+                </a>
+            </div>
+        </div>
+        <div class="footer__desc">
+            Công ty TNHH T.Travel Việt Nam - Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội
+        </div>
+        <div class="footer__copyright">
+            Copyright <i class="fa-solid fa-copyright"></i> 2022 T.Travel
+        </div>
+    </footer>
+    <!-- Thanh menu -->
+    <div class="modal js-modal">
+        <div class="modal__body--left header-menu-form header-menu-disabled">
+            <div class="header__menu">
+                <div class="header__menu-title">T.Travel</div>
+                <ul class="header__menu-list">
+                    <li class="header__menu-item">
+                        <a href="adminUser.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-house"></i>
+                            <span class="header__menu-item-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="adminUser.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-user"></i>
+                            <span class="header__menu-item-text">Quản lý tài khoản</span>
+                        </a>
+                    </li>
+                    <!-- <li class="header__menu-item">
+                        <a href="" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
+                            <span class="header__menu-item-text">Quản lý đặt tour</span>
+                        </a>
+                    </li> -->
+                    <li class="header__menu-item">
+                        <a href="adminTour.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-location-dot"></i>
+                            <span class="header__menu-item-text">Quản lý tour</span>
+                        </a>
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="adminBlog.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-file-lines"></i>
+                            <span class="header__menu-item-text">Quản lý blog</span>
+                        </a>
+                    </li>
+                    <li class="header__menu-item">
+                        <a href="adminVehicle.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-bus-simple"></i>
+                            <span class="header__menu-item-text">Quản lý phương tiện</span>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <a href="adminHotel.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-house"></i>
+                            <span class="header__menu-item-text">Quản lý khách sạn</span>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <a href="" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-circle-question"></i>
+                            <span class="header__menu-item-text">Hướng dẫn</span>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <a href="adminChart.html" class="header__menu-link">
+                            <i class="header__menu-icon fa-solid fa-chart-area"></i>
+                            <span class="header__menu-item-text">Trực quan dữ liệu</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        const modal = document.querySelector('.js-modal');
+        const menuContainer = document.querySelector('.header-menu-form');
+        const menuButton = document.querySelector('.js-header-button');
+        function openMenu() {
+            modal.classList.add('open');
+            menuContainer.classList.add('open');
+        }
+        function closeModal() {
+            modal.classList.remove('open');
+            menuContainer.classList.remove('open');
+        }
+        menuButton.addEventListener('click', openMenu);
+        modal.addEventListener('click', closeModal);
+        menuContainer.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>

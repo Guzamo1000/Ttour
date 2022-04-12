@@ -1,0 +1,97 @@
+#admin-manage{
+    margin-top: 108px;
+}
+.admin-manage__select{
+    margin-bottom:32px;
+}
+.admin-manage__select-title{
+    font-size: 1.6rem;
+    margin-right: 8px;
+}
+.admin-manage__title{
+    margin: 0;
+    margin-top: 64px;
+    text-align: center;
+    margin-bottom:64px;
+}
+.admin-manage__selection{
+    font-size: 1.6rem;
+    border: 1px solid #ccc;
+}
+.thead-dark{
+    background-color: #03032e;
+}
+.text-white{
+    color: #fff;
+}
+.admin-manage__detail{
+    padding:16px 16px 64px 16px;
+    border: 1px solid #000;
+    margin-bottom: 128px;
+}
+.admin-manage__detail-title{
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0;
+    margin-bottom:32px;
+    font-weight: 600;
+}
+.admin-manage__info{
+    display: flex;
+    font-size: 1.6rem;
+}
+.admin-manage__info-item-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    margin-right: auto;
+}
+.admin-manage__info-button-wrapper{
+    flex: 1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.admin-manage__info-button{
+    position: relative;
+    top:-15%;
+    left: 20%;
+    padding:8px 16px;
+    border-radius:16px;
+    background-color: hsl(0, 100%, 51%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.admin-manage__info-item{
+    margin-bottom: 32px;
+}
+.admin-manage__action{
+    display:flex;
+}
+.admin-manage__select{
+    margin-right: 16px;
+}
+.admin-manage__action-button{
+    height: 50%;
+    background-color: #f40b0b;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding:8px;
+    border-radius:10px;
+    position: relative;
+    top: -4px;
+}
+.admin-manage__editor{
+    height: 260px;
+}
+.admin-manage__info-label{
+    min-width: 160px;
+    display: inline-block;
+}
+.admin-manage__info-input{
+    border:1px solid #ccc;
+    padding: 8px 8px 8px 16px;
+    border-radius:10px;
+}

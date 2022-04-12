@@ -1,0 +1,179 @@
+#slider{
+    padding-top:50%;
+    position: relative;
+    background:url('../images/halong.jpg') top center no-repeat /cover;
+    margin-top:44px;
+}
+.slider__search{
+    background-color: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 50%;
+    transform:translateY(-50%);
+    padding: 32px 32px 128px 32px;
+    border-radius: 10px;
+    width: 400px;
+}
+.slider__search-title{
+    margin: 0;
+    color: #fff;
+    text-shadow: 1px 0 #000;
+    margin-bottom:32px;
+}
+.content{
+    padding-bottom: 64px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+.content__intro-title{
+    margin: 0;
+    text-align: center;
+    margin:64px 0;
+    font-size: 2.0rem;
+    font-weight: 600;
+}
+.content__title{
+    margin: 0;
+    text-align: center;
+    margin:64px 0 32px 0;
+    font-size: 2.0rem;
+    font-weight: 600;
+}
+.content__intro-item{
+    text-align: center;
+}
+.content__intro-item-icon{
+    font-size: 2.8rem;
+}
+.content__intro-item-title{
+    margin:0;
+    margin: 16px 0;
+    font-size: 1.6rem;
+}
+.content__intro-item-para{
+    font-size: 1.6rem;
+    margin: 0;
+    text-align: center;
+}
+.tour__item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.tour__item-image{
+    width: 100%;
+    height:75%;
+    border-radius: 12px;
+}
+.tour__item-price{
+    font-size: 1.6rem;
+    margin: 16px 0;
+    color: #fc9003;
+    font-weight: 600;
+}
+.tour__item-desc{
+    margin: 0;
+    font-size: 1.6rem;
+    text-align: center;
+}
+.tour__location{
+    padding-left:0;
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 32px;
+    position: relative;
+    left: 10%;
+}
+.content__subtitle{
+    margin: 0;
+    text-align: center;
+    color: #000;
+    margin: 32px;
+    opacity: 0.7;
+    font-size:1.1rem;
+}
+.tour__location-item{
+    margin-right: 16px;
+}
+
+.tour__location-button{
+    padding: 8px;
+    font-size: 1.6rem;
+    border-radius:10px;
+    border: none;
+    outline: none;
+    background-color: #fc9003;
+    color: #fff;
+}
+.forward{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.forward__button{
+    width:36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: relative;
+    top:-44px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+.forward__icon{
+    font-size: 1.6rem;
+    color:#03adfc;
+}
+.location__link{
+    text-decoration: none;
+    color: #000;
+}
+.location__link:hover{
+    text-decoration: none;
+    color: #000;
+}
+.location-img{
+    width: 100%;
+    border-radius:16px;
+}
+.location-name{
+    padding:0;
+    margin: 0;
+    margin-top: 12px;
+    text-align: center;
+}
+.location__icon{
+    font-size: 1rem;
+}
+.location__redirect-link{
+    margin: auto;
+}
+.content__title--left{
+    margin: 64px 0 16px 0;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.fav-location-list{
+    font-size: 1.6rem;
+    padding-left: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+}
+.fav-location-item{
+    margin-right:12px;
+    position: relative;
+}
+.fav-location-link{
+    color: #000;
+    text-decoration: none;
+}
+.fav-location-item::before{
+    content: "";
+    position: absolute;
+    width:2px;
+    height: 14px;
+    background-color: #000;
+    transform: translateY(4px);
+    right: -7px;
+}
+

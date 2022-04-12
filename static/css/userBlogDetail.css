@@ -1,0 +1,18 @@
+.search-area{
+    margin-top:44px;
+}
+.search-with-image{
+    padding-top:25%;
+    background-image: url(../images/ruong-bac-thang.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+.searchbar__tour{
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    width: 25%;
+    transform:translateX(-50%);
+}
