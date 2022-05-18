@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/userBase.css">
     <link rel="stylesheet" href="../static/css/userTour.css">
+    <link rel="stylesheet" href="../static/css/userSearch.css">
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -41,7 +42,12 @@
                                 <span class="header__navbar-title">Hướng dẫn</span>
                             </a>
                         </li>
-                       
+                        <li class="header__navbar-item">
+                            <a href="" class="header__navbar-link mr-40">
+                                <i class="header__icon fa-solid fa-circle-question"></i>
+                                <span class="header__navbar-title">Đặt trước</span>
+                            </a>
+                        </li>
                         <li class="header__navbar-item">
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
@@ -67,20 +73,24 @@
                 <div class="searchbar searchbar__user-base">
                     <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
                     <input type="text" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
-                    <input type="file">
+                    <button class="searchbar__button">
+                        <input type = "file"></input>
+                    </button>
                 </div>
             </div>
+            <h3 class="sort__title">
+                Sắp xếp theo
+            </h3>
             <ul class="search__suggest">
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Thành Phố Hồ Chí Minh</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
+                <li class="search__suggest-item"><a href="" class="search__suggest-link">Giá tăng dần</a></li>
+                <li class="search__suggest-item"><a href="" class="search__suggest-link">Giá giảm dần</a></li>
+                <li class="search__suggest-item"><a href="" class="search__suggest-link">Mới nhất</a></li>
             </ul>
         </div>
         <div class="content mt-128">
             <div class="grid">
                 <h3 class="content__title">
-                    Tour du lịch combo trọn gói
+                    Kết quả tìm kếm
                 </h3>
                 <h4 class="content__subtitle">
                     Bạn đã sẵn sàng tham gia cùng chúng tôi ?
@@ -111,32 +121,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid__row mb-36">
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                </div>
+               
                 <div class="grid__row mb-36">
                     <div class="grid__column-3 tour__item">
                         <a href="" class="tour__item-link">
@@ -246,19 +231,14 @@
                             <span class="header__menu-item-text">Thông tin</span>
                         </a>
                     </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
-                        </a>
-                    </li>
+                    
                     <li class="header__menu-item">
                         <a href="" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-location-dot"></i>
                             <span class="header__menu-item-text">Tour</span>
                         </a>
                     </li>
-                   
+                    
                     <li class="header__menu-item">
                         <a href="" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-circle-question"></i>

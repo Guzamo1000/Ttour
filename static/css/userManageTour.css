@@ -1,0 +1,90 @@
+.manage-info{
+    margin-top: 44px;
+    padding: 32px;
+    background-color: #15253B;
+}
+.avatar__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.avatar{
+    text-align: center;
+    margin-bottom: 64px;
+}
+.avatar__img{
+    width: 80%;
+    border-radius:50%;
+}
+.manage-info__item{
+    
+}
+.manage-info__button{
+    padding: 8px;
+    border-radius: 10px;
+    min-width: 100px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    margin-bottom:16px;
+}
+.manage-info__label{
+    display:block;
+    min-width: 100px;
+    color: #fff;
+    margin-bottom:16px;
+    font-size: 1.6rem;
+}
+.manage-info__content{
+    color: #fff;
+}
+.manage-table{
+    margin: 128px 0 44px 0;
+    height: 500px;
+}
+.manage-table table{
+    border: 1px solid #ccc;
+}
+.thead-dark{
+    background-color: #03032e;
+    color: #fff;
+}
+.delete-button__container{
+    float: right;
+    margin-bottom:64px;
+}
+.manage__form{
+    background-color: #15253B;
+    padding: 64px;
+    border-radius: 10px;
+    display:none;
+}
+.manage__form.open{
+    display: block;
+}
+.form__item{
+    display:flex;
+    margin-bottom:16px;
+    align-items: center;
+}
+.form__label{
+    display: block;
+    font-size: 1.6rem;
+    color: #fff;
+    min-width: 136px;
+}
+.form__input{
+    padding:8px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.form__buttons{
+    display: flex;
+    justify-content:space-between;
+}
+.form__button{
+    min-width: 100px;
+    background-color: #ccc;
+    color: #000;
+}

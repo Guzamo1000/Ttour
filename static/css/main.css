@@ -1,7 +1,10 @@
 #slider{
     padding-top:50%;
     position: relative;
-    background:url('../images/halong.jpg') top center no-repeat /cover;
+    /* //background:url('../images/halong.jpg') top center no-repeat /cover; */
+    background-position:top center ;
+    background-repeat: no-repeat ;
+    background-size: cover;
     margin-top:44px;
 }
 .slider__search{
@@ -11,7 +14,7 @@
     transform:translateY(-50%);
     padding: 32px 32px 128px 32px;
     border-radius: 10px;
-    width: 400px;
+    width: 600px;
 }
 .slider__search-title{
     margin: 0;
@@ -52,36 +55,6 @@
     font-size: 1.6rem;
     margin: 0;
     text-align: center;
-}
-.tour__item{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-.tour__item-image{
-    width: 100%;
-    height:75%;
-    border-radius: 12px;
-}
-.tour__item-price{
-    font-size: 1.6rem;
-    margin: 16px 0;
-    color: #fc9003;
-    font-weight: 600;
-}
-.tour__item-desc{
-    margin: 0;
-    font-size: 1.6rem;
-    text-align: center;
-}
-.tour__location{
-    padding-left:0;
-    display: flex;
-    list-style-type: none;
-    margin-bottom: 32px;
-    position: relative;
-    left: 10%;
 }
 .content__subtitle{
     margin: 0;
@@ -176,4 +149,5 @@
     transform: translateY(4px);
     right: -7px;
 }
+
 

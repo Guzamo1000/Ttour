@@ -28,6 +28,10 @@
     padding:16px 16px 64px 16px;
     border: 1px solid #000;
     margin-bottom: 128px;
+    display: none;
+}
+.display{
+    display: block;
 }
 .admin-manage__detail-title{
     text-align: center;
