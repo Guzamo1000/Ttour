@@ -51,12 +51,7 @@
                             <span class="header__navbar-title">Hướng dẫn</span>
                         </a>
                     </li>
-                    <li class="header__navbar-item">
-                        <a href="" class="header__navbar-link mr-40">
-                            <i class="header__icon fa-solid fa-circle-question"></i>
-                            <span class="header__navbar-title">Đặt trước</span>
-                        </a>
-                    </li>
+
                     <li class="header__navbar-item">
                         <div class="header__navbar-user">
                             <div class="header__navbar-title">
@@ -103,69 +98,73 @@
                         <th>Gía phòng</th>
                         <th>Chức năng</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Công Hậu</td>
-                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
-                            <td>0123456789</td>
-                            <td>3</td>
-                            <td>
-                                <a href="admin/user/view/{$user.id}" class="btn btn-primary btn-warning">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Công Hậu</td>
-                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
-                            <td>0123456789</td>
-                            <td>3</td>
-                            <td>
-                                <a href="" class="btn btn-primary btn-warning">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="" class="btn btn-primary btn-danger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Công Hậu</td>
+                        <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
+                        <td>0123456789</td>
+                        <td>3</td>
+                        <td>
+                            <a href="admin/user/view/{$user.id}" class="btn btn-primary btn-warning">
+                                <!-- <i class="fa-solid fa-eye"></i> -->
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Công Hậu</td>
+                        <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
+                        <td>0123456789</td>
+                        <td>3</td>
+                        <td>
+                            <a href="" class="btn btn-primary btn-warning">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <!-- <i class="fa-solid fa-eye"></i> -->
+                            </a>
+                            <a href="" class="btn btn-primary btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <div class="admin-manage__detail">
                 <h3 class="admin-manage__detail-title">Thêm mới Khách sạn</h3>
-                <div class="admin-manage__info">
-                    <div class="admin-manage__info-item-wrapper">
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Tên khách sạn:</span>
-                            <input type="text" class="admin-manage__info-input"
-                                placeholder="Nhập tên khách sạn"></input>
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Địa điểm:</span>
-                            <input type="text" class="admin-manage__info-input"
-                                placeholder="Nhập địa điểm khách sạn"></input>
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Giá phòng khách sạn:</span>
-                            <input type="text" class="admin-manage__info-input"
-                                placeholder="Nhập giá phòng khách sạn"></input>
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Miêu tả:</span>
+                <form action="" method="post">
+                    <div class="admin-manage__info">
+                        <div class="admin-manage__info-item-wrapper">
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Tên khách sạn:</span>
+                                <input type="text" class="admin-manage__info-input"
+                                    placeholder="Nhập tên khách sạn"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Địa điểm:</span>
+                                <input type="text" class="admin-manage__info-input"
+                                    placeholder="Nhập địa điểm khách sạn"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Giá phòng khách sạn:</span>
+                                <input type="text" class="admin-manage__info-input"
+                                    placeholder="Nhập giá phòng khách sạn"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Miêu tả:</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="admin-manage__editor">
+                    <div class="admin-manage__editor">
 
-                </div>
-                <br><button class="admin-manage__action-button">Thêm mới</button>
+                    </div>
+                    <br><button class="admin-manage__action-button">Lưu</button>
+                </form>
             </div>
         </div>
     </div>
@@ -251,12 +250,7 @@
                             <span class="header__menu-item-text">Quản lý tour</span>
                         </a>
                     </li>
-                    <li class="header__menu-item">
-                        <a href="adminBlog.html" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-file-lines"></i>
-                            <span class="header__menu-item-text">Quản lý blog</span>
-                        </a>
-                    </li>
+
                     <li class="header__menu-item">
                         <a href="adminVehicle.html" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-bus-simple"></i>
@@ -284,7 +278,6 @@
                             <span class="header__menu-item-text">Trực quan dữ liệu</span>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -308,5 +301,4 @@
         });
     </script>
 </body>
-
 </html>

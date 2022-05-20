@@ -51,12 +51,7 @@
                             <span class="header__navbar-title">Hướng dẫn</span>
                         </a>
                     </li>
-                    <li class="header__navbar-item">
-                        <a href="" class="header__navbar-link mr-40">
-                            <i class="header__icon fa-solid fa-circle-question"></i>
-                            <span class="header__navbar-title">Đặt trước</span>
-                        </a>
-                    </li>
+                   
                     <li class="header__navbar-item">
                         <div class="header__navbar-user">
                             <div class="header__navbar-title">
@@ -156,21 +151,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Công Hậu</td>
-                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
-                            <td>0123456789</td>
-                            <td>3</td>
-                            <td>
-                                <a href="admin/user/view/{$user.id}" class="btn btn-primary btn-warning">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        {%for cust in infor_cust%}
+                            <tr>
+                                <td>cust[0]</td>
+                                <td>cust[1]</td>
+                                <td>cust[2]</td>
+                                <td>cust[3]</td>
+                                <td>cust[4]</td>
+                                <td>
+                                    <a href="admin/user/view/{$user.id}" class="btn btn-primary btn-warning">
+                                        <!-- <i class="fa-solid fa-eye"></i> -->
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {%endfor%}
                         <tr>
                             <td>1</td>
                             <td>Nguyễn Công Hậu</td>
@@ -179,7 +177,8 @@
                             <td>3</td>
                             <td>
                                 <a href="" class="btn btn-primary btn-warning">
-                                    <i class="fa-solid fa-eye"></i>
+                                    <!-- <i class="fa-solid fa-eye"></i> -->
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <a href="" class="btn btn-primary btn-danger">
                                     <i class="fa-solid fa-trash-can"></i>
@@ -190,42 +189,44 @@
             </table>
             <div class="admin-manage__detail">
                 <h3 class="admin-manage__detail-title">Thêm mới Tour</h3>
-                <div class="admin-manage__info">
-                    <div class="admin-manage__info-item-wrapper">
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Tên tour:</span>
-                            <input type="text" class="admin-manage__info-input" placeholder="Tên tour"></input>
+                <form action="" method="post">
+                    <div class="admin-manage__info">
+                        <div class="admin-manage__info-item-wrapper">
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Tên tour:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Tên tour"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Tên khách sạn:</span>
+                                <select class="admin-manage__info-input" placeholder="Khách sạn 01">
+                                    <option>Khách sạn 01</option>
+                                    <option>Khách sạn 02</option>
+                                </select>
+                                <!-- <input type="text" class="admin-manage__info-input" placeholder="Tên khách sạn"></input> -->
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Kiểu phương tiện:</span>
+                                <select class="admin-manage__info-input" placeholder="Xe khách">
+                                    <option>Xe máy</option>
+                                    <option>Xe khách</option>
+                                </select>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Giá vé:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Nhập giá vé"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Miêu tả:</span>
+                            </div>
                         </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Tên khách sạn:</span>
-                            <select class="admin-manage__info-input" placeholder="Khách sạn 01">
-                                <option>Khách sạn 01</option>
-                                <option>Khách sạn 02</option>
-                            </select>
-                            <!-- <input type="text" class="admin-manage__info-input" placeholder="Tên khách sạn"></input> -->
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Kiểu phương tiện:</span>
-                            <select class="admin-manage__info-input" placeholder="Xe khách">
-                                <option>Xe máy</option>
-                                <option>Xe khách</option>
-                            </select>
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Giá vé:</span>
-                            <input type="text" class="admin-manage__info-input" placeholder="Nhập giá vé"></input>
-                        </div>
-                        <div class="admin-manage__info-item">
-                            <span class="admin-manage__info-label">Miêu tả:</span>
-                        </div>
+    
                     </div>
-
-                </div>
-
-                <div class="admin-manage__editor">
-
-                </div>
-                <br><button class="admin-manage__action-button">Thêm mới</button>
+    
+                    <div class="admin-manage__editor">
+    
+                    </div>
+                    <br><button class="admin-manage__action-button">Lưu</button>
+                </form>
             </div>
         </div>
     </div>
@@ -310,12 +311,7 @@
                             <span class="header__menu-item-text">Quản lý tour</span>
                         </a>
                     </li>
-                    <li class="header__menu-item">
-                        <a href="adminBlog.html" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-file-lines"></i>
-                            <span class="header__menu-item-text">Quản lý blog</span>
-                        </a>
-                    </li>
+                    
                     <li class="header__menu-item">
                         <a href="adminVehicle.html" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-bus-simple"></i>

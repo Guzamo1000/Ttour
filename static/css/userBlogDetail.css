@@ -1,18 +1,19 @@
-.search-area{
-    margin-top:44px;
+.para__content{
+    margin: 36px 0;
 }
-.search-with-image{
-    padding-top:25%;
-    background-image: url(../images/ruong-bac-thang.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.para__title{
+    font-weight: 600;
+}
+.para__info{
+    display:flex;
+}
+.para__info-category{
+    font-weight: 600;
+    margin-right: 8px;
+    color: #040c66;
+}
+.para__info-date{
+    font-size: 1.2rem;
     position: relative;
-}
-.searchbar__tour{
-    position: absolute;
-    bottom: -16px;
-    left: 50%;
-    width: 25%;
-    transform:translateX(-50%);
+    top: 2px;
 }
