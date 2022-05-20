@@ -2,7 +2,7 @@ from flask import Flask, redirect
 from sqlalchemy import true
 from database.db import mysql
 from model.admin import admin
-
+from model.user import user
 app=Flask(__name__)
 
 app.config["MYSQL_DATABASE_HOST"]='localhost'
@@ -12,6 +12,7 @@ app.config["MYSQL_DATABASE_DB"]='ttour'
 
 mysql.init_app(app)
 app.register_blueprint(admin)
+app.register_blueprint(user)
 
 
 
