@@ -66,11 +66,11 @@
                         <div class="header__navbar-user">
                             <div class="header__navbar-title">
                                 <i class="header__icon fa-solid fa-user"></i>
-                                Tài khoản
+                                {{nameadmin}}
                             </div>
                             <ul class="header__navbar-user-list">
                                 <li class="header__navbar-user-item">
-                                    <a href="home.html" class="header__menu-link">
+                                    <a href="/logout" class="header__menu-link">
                                         <button class="header__navbar-button js-register-button">Đăng xuất</button>
                                     </a>
                                 </li>
@@ -168,6 +168,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {%if history!=none%}
                                 {% for hist in history %}
                                 <tr>
                                     <td>{{hist[0]}}</td>
@@ -178,7 +179,10 @@
                                     <!-- <td>3.000.000</td> -->
                                 </tr>
                                 {%endfor%}
-
+                                {%endif%}
+                                {%if history==none%}
+                                    <td>Khách hàng này chưa đặt tour nào :(((</td>
+                                {%endif%}
                             </tbody>
                         </table>
                     </form>
@@ -230,13 +234,13 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="adminUser.html" class="header__menu-link">
+                        <a href="admin" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="adminUser.html" class="header__menu-link">
+                        <a href="admin" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Quản lý tài khoản</span>
                         </a>
@@ -248,7 +252,7 @@
                         </a>
                     </li> -->
                     <li class="header__menu-item">
-                        <a href="/adminuser" class="header__menu-link">
+                        <a href="/admintour" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-location-dot"></i>
                             <span class="header__menu-item-text">Quản lý tour</span>
                         </a>

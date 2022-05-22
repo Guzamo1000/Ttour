@@ -4,7 +4,7 @@ from database.db import mysql
 from model.admin import admin
 from model.user import user
 app=Flask(__name__)
-
+app.config["SECRET_KEY"] = "ttour"
 app.config["MYSQL_DATABASE_HOST"]='localhost'
 app.config["MYSQL_DATABASE_USER"]="root"
 app.config["MYSQL_DATABASE_PASSWORD"]="258000"
