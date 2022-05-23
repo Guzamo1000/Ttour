@@ -25,7 +25,7 @@ def adminlogin():
         admin=cur.fetchall()
         if admin is not None:
             session['admin']=user_name
-            session['id']=admin[0]
+            # session['id']=admin[0]
             return redirect(url_for('admin.adminuser'))
 
 

@@ -1,409 +1,259 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page T.Travel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.0.0-web/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/main.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="icon" type="image/x-icon" href="../static/images/favicon.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script defer src="../static/javascripts/a.js"></script>
-</head>
-<body>
-
-    <div class="app">
-        <header id="header">
-            <div class="grid">
-                <div class="header__container">
-                    <ul class="header__navbar">
-                        <li class="header__navbar-item">
-                            <button class="header__navbar-button header__navbar-button--active js-header-button">
-                                <i class="header__icon fa-solid fa-bars"></i>
-                            </button>
-                        </li>
-                        <li class="header__navbar-item">
-                            <a href="" class="header__navbar-link">
-                                <h1 class="header__navbar-logo">
-                                    T.Travel
-                                </h1>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul class="header__navbar">
-                        <li class="header__navbar-item">
-                            <a href="" class="header__navbar-link mr-40">
-                                <i class="header__icon fa-solid fa-circle-question"></i>
-                                <span class="header__navbar-title">Hướng dẫn</span>
-                            </a>
-                        </li>
-                        
-                        <li class="header__navbar-item">
-                            <div class="header__navbar-user">
-                                <div class="header__navbar-title">
-                                    <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
-                                </div>
-                                <ul class="header__navbar-user-list">
-                                    <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
-                                    </li>
-                                    <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+{% extends "userBase.html" %}
+{% block title %}Page T.Travel{% endblock %}
+{% block content %} 
+    
+<div id="slider" >
+    <div class="grid">
+        <div class="slider__search">
+            <h2 class="slider__search-title">
+                Tìm kiếm hành trình mới
+            </h2>
+            <form action="" method="post">
+                <div class="searchbar">
+                    <button href="userSearch.html" class="searchbar__button">
+                        <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
+                    <input type = "file"></input>
                 </div>
-            </div>
-        </header>
-        <div id="slider" >
-          
-            <div class="grid">
-                <div class="slider__search">
-                    <h2 class="slider__search-title">
-                        Tìm kiếm hành trình mới
-                    </h2>
-                    <form action="" method="post">
-                        <div class="searchbar">
-                            <button href="userSearch.html" class="searchbar__button">
-                                <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
-                            </button>
-                            <input type="text" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
-                            <input type = "file"></input>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
-        <div class="content content__intro">
-            <div class="grid">
-                <h3 class="content__intro-title">
-                    Tại sao bạn nên chọn T.Travel?
-                </h3>
-                <div class="grid__row">
-                    <div class="grid__column-4 content__intro-item">
-                        <i class="content__intro-item-icon fa-solid fa-ticket"></i>
-                        <h4 class="content__intro-item-title">Linh hoạt tối đa</h4>
-                        <p class="content__intro-item-para">Đặt chỗ ngay và thanh toán sau để bảo đảm các hoạt động của
-                            bạn không bị bỏ lỡ</p>
-                    </div>
-                    <div class="grid__column-4 content__intro-item">
-                        <i class="content__intro-item-icon fa-solid fa-ticket"></i>
-                        <h4 class="content__intro-item-title">Trải nghiệm đáng nhớ</h4>
-                        <p class="content__intro-item-para">Tận hưởng mọi khoảng khắc bên bạn bè người thân, đồng nghiệp
-                        </p>
-                    </div>
-                    <div class="grid__column-4 content__intro-item">
-                        <i class="content__intro-item-icon fa-solid fa-ticket"></i>
-                        <h4 class="content__intro-item-title">Đáng tin</h4>
-                        <p class="content__intro-item-para">Đối tác tin cậy, có kinh nghiệm nhiều năm</p>
-                    </div>
-                    <div class="grid__column-4 content__intro-item">
-                        <i class="content__intro-item-icon fa-solid fa-ticket"></i>
-                        <h4 class="content__intro-item-title">Ưu đãi hấp dẫn</h4>
-                        <p class="content__intro-item-para">Combo trọn gói, giá rẻ bất ngờ. Mùa du lịch nhiều khuyến mãi
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="grid">
-                <h3 class="content__title">
-                    Tour hấp dẫn
-                </h3>
-                <h4 class="content__subtitle">
-                    Yên tâm trải nghiệm
-                </h4>
-                <div class="grid__row">
-                    <div class="grid__column-1 forward">
-                        <button class="forward__button">
-                            <i class="forward__icon fa-solid fa-angle-left"></i>
-                        </button>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-1 forward">
-                        <button class="forward__button">
-                            <i class="forward__icon fa-solid fa-angle-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="content">
-            <div class="grid">
-                <h3 class="content__title">
-                    Tour hiện có
-                </h3>
-                <h4 class="content__subtitle">
-                    Trải nghiệm đa dạng
-                </h4>
-                <div class="grid__row">
-                    <div class="grid__column-1 forward">
-                        <button class="forward__button">
-                            <i class="forward__icon fa-solid fa-angle-left"></i>
-                        </button>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-1 forward">
-                        <button class="forward__button">
-                            <i class="forward__icon fa-solid fa-angle-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="grid">
-                <h3 class="content__title">
-                    Điểm đến địa phương
-                </h3>
-                <h4 class="content__subtitle">
-                    Bạn đã sẵn sàng  khám phá những địa điểm tốt nhất của chúng tôi
-                </h4>
-                <div class="grid__row">
-                    <div class="grid__column-5">
-                        <a href="" class="location__link">
-                            <img src="../static/images/halong.jpg" alt="" class="location-img">
-                            <p class="location-name">Hạ Long</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-5">
-                        <a href="" class="location__link">
-                            <img src="../static/images/halong.jpg" alt="" class="location-img">
-                            <p class="location-name">Hạ Long</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-5">
-                        <a href="" class="location__link">
-                            <img src="../static/images/halong.jpg" alt="" class="location-img">
-                            <p class="location-name">Hạ Long</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-5">
-                        <a href="" class="location__link">
-                            <img src="../static/images/halong.jpg" alt="" class="location-img">
-                            <p class="location-name">Hạ Long</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-5">
-                        <a href="" class="location__link">
-                            <img src="../static/images/halong.jpg" alt="" class="location-img">
-                            <p class="location-name">Hạ Long</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid__row">
-                    <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
-                        Xem tất cả điểm đến
-                        <i class="location__icon fa-solid fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="grid">
-                <div class="content__title--left">
-                    Điểm đến yêu thích
-                </div>
-                <ul class="fav-location-list">
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                </ul>
-                <ul class="fav-location-list">
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                </ul>
-                <ul class="fav-location-list">
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                    <li class="fav-location-item">
-                        <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <footer>
-            <div class="footer-link__wrapper">
-                <div class="footer-social-area">
-                    <a href="https://youtube.com" class="footer-social__icon footer-social__link">
-                        <i class="fa-brands fa-facebook-square"></i>
-                    </a>
-                    <a href="" class="footer-social__icon footer-social__link">
-                        <i class="fa-brands fa-google"></i>
-                    </a>
-                    <a href="" class="footer-social__icon footer-social__link">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="" class="footer-social__icon footer-social__link">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-                <div class="footer-social__support">
-                    <a href="" class="footer-social__link">
-                        Chính sách - Bảo mật
-                    </a>
-                    <a href="" class="footer-social__link">
-                        Trợ giúp
-                    </a>
-                    <a href="" class="footer-social__link">
-                        Chúng tôi
-                    </a>
-                </div>
-            </div>
-            <div class="footer__desc">
-                Công ty TNHH T.Travel Việt Nam - Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội
-            </div>
-            <div class="footer__copyright">
-                Copyright <i class="fa-solid fa-copyright"></i> 2022 T.Travel
-            </div>
-        </footer>
     </div>
-    <!-- Giao diện đăng nhập - đăng ký -->
-    <div class="modal js-modal">
-        <div class="modal__body--left header-menu-form">
-            <div class="header__menu">
-                <div class="header__menu-title">T.Travel</div>
-                <ul class="header__menu-list">
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-house"></i>
-                            <span class="header__menu-item-text">Trang chủ</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-user"></i>
-                            <span class="header__menu-item-text">Thông tin</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-location-dot"></i>
-                            <span class="header__menu-item-text">Tour</span>
-                        </a>
-                    </li>
-                   
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-circle-question"></i>
-                            <span class="header__menu-item-text">Hướng dẫn</span>
-                        </a>
-                    </li>
-                </ul>
+</div>
+<div class="content content__intro">
+    <div class="grid">
+        <h3 class="content__intro-title">
+            Tại sao bạn nên chọn T.Travel?
+        </h3>
+        <div class="grid__row">
+            <div class="grid__column-4 content__intro-item">
+                <i class="content__intro-item-icon fa-solid fa-ticket"></i>
+                <h4 class="content__intro-item-title">Linh hoạt tối đa</h4>
+                <p class="content__intro-item-para">Đặt chỗ ngay và thanh toán sau để bảo đảm các hoạt động của
+                    bạn không bị bỏ lỡ</p>
+            </div>
+            <div class="grid__column-4 content__intro-item">
+                <i class="content__intro-item-icon fa-solid fa-ticket"></i>
+                <h4 class="content__intro-item-title">Trải nghiệm đáng nhớ</h4>
+                <p class="content__intro-item-para">Tận hưởng mọi khoảng khắc bên bạn bè người thân, đồng nghiệp
+                </p>
+            </div>
+            <div class="grid__column-4 content__intro-item">
+                <i class="content__intro-item-icon fa-solid fa-ticket"></i>
+                <h4 class="content__intro-item-title">Đáng tin</h4>
+                <p class="content__intro-item-para">Đối tác tin cậy, có kinh nghiệm nhiều năm</p>
+            </div>
+            <div class="grid__column-4 content__intro-item">
+                <i class="content__intro-item-icon fa-solid fa-ticket"></i>
+                <h4 class="content__intro-item-title">Ưu đãi hấp dẫn</h4>
+                <p class="content__intro-item-para">Combo trọn gói, giá rẻ bất ngờ. Mùa du lịch nhiều khuyến mãi
+                </p>
             </div>
         </div>
     </div>
-    <script>
-        const modal = document.querySelector('.js-modal');
-        const menuContainer = document.querySelector('.header-menu-form');
-        const menuButton = document.querySelector('.js-header-button');
-        function openMenu() {
-            modal.classList.add('open');
-            menuContainer.classList.add('open');
-        }
-        function closeModal() {
-            modal.classList.remove('open');
-            menuContainer.classList.remove('open');
-        }
-        menuButton.addEventListener('click', openMenu);
-        modal.addEventListener('click', closeModal);
-        menuContainer.addEventListener('click', function (event) {
-            event.stopPropagation();
-        });
-    </script>
+</div>
+<div class="content">
+    <div class="grid">
+        <h3 class="content__title">
+            Tour hấp dẫn
+        </h3>
+        <h4 class="content__subtitle">
+            Yên tâm trải nghiệm
+        </h4>
+        <div class="grid__row">
+            <div class="grid__column-1 forward">
+                <button class="forward__button">
+                    <i class="forward__icon fa-solid fa-angle-left"></i>
+                </button>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-1 forward">
+                <button class="forward__button">
+                    <i class="forward__icon fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="grid__row">
+            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
+                Xem tất cả
+                <i class="location__icon fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
 
-</body>
+</div>
+<div class="content">
+    <div class="grid">
+        <h3 class="content__title">
+            Tour hiện có
+        </h3>
+        <h4 class="content__subtitle">
+            Trải nghiệm đa dạng
+        </h4>
+        <div class="grid__row">
+            <div class="grid__column-1 forward">
+                <button class="forward__button">
+                    <i class="forward__icon fa-solid fa-angle-left"></i>
+                </button>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-3-10 tour__item">
+                <a href="" class="tour__item-link">
+                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                    <span class="tour__item-price">1.499.000 VND</span>
+                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                        Landmark 81</p>
+                </a>
+            </div>
+            <div class="grid__column-1 forward">
+                <button class="forward__button">
+                    <i class="forward__icon fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="grid__row">
+            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
+                Xem tất cả
+                <i class="location__icon fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="grid">
+        <h3 class="content__title">
+            Điểm đến địa phương
+        </h3>
+        <h4 class="content__subtitle">
+            Bạn đã sẵn sàng  khám phá những địa điểm tốt nhất của chúng tôi
+        </h4>
+        <div class="grid__row">
+            <div class="grid__column-5">
+                <a href="" class="location__link">
+                    <img src="../static/images/halong.jpg" alt="" class="location-img">
+                    <p class="location-name">Hạ Long</p>
+                </a>
+            </div>
+            <div class="grid__column-5">
+                <a href="" class="location__link">
+                    <img src="../static/images/halong.jpg" alt="" class="location-img">
+                    <p class="location-name">Hạ Long</p>
+                </a>
+            </div>
+            <div class="grid__column-5">
+                <a href="" class="location__link">
+                    <img src="../static/images/halong.jpg" alt="" class="location-img">
+                    <p class="location-name">Hạ Long</p>
+                </a>
+            </div>
+            <div class="grid__column-5">
+                <a href="" class="location__link">
+                    <img src="../static/images/halong.jpg" alt="" class="location-img">
+                    <p class="location-name">Hạ Long</p>
+                </a>
+            </div>
+            <div class="grid__column-5">
+                <a href="" class="location__link">
+                    <img src="../static/images/halong.jpg" alt="" class="location-img">
+                    <p class="location-name">Hạ Long</p>
+                </a>
+            </div>
+        </div>
+        <div class="grid__row">
+            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
+                Xem tất cả điểm đến
+                <i class="location__icon fa-solid fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="grid">
+        <div class="content__title--left">
+            Điểm đến yêu thích
+        </div>
+        <ul class="fav-location-list">
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
 
-</html>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+        </ul>
+        <ul class="fav-location-list">
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+        </ul>
+        <ul class="fav-location-list">
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+            <li class="fav-location-item">
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+      

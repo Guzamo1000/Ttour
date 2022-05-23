@@ -52,7 +52,11 @@
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
                                     <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
+                                    {% if session['nameuser'] %}
+                                    <p>{{session['nameuser']}}</p>
+                                    {% else %}
+                                    <p>Chưa đăng nhập</p>
+                                    {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
                                     <li class="header__navbar-user-item">

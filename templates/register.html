@@ -17,48 +17,76 @@
             </a>
         </div>
     </header>
-    <section class="content mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 mx-auto">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Đăng kí</h4>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for cat, mess in messages %}
+                    {% if cat == "error" %}
+                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <form method="POST">
+        <section class="content mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Đăng kí</h4>
+                            </div>
+                            <form action="" method="post" class="p-3 form__control">
+                                <div class="form-group">
+                                    <label for="username">Tên đăng nhập</label>
+                                    <input type="text" name="username" id="" class="form-control" placeholder="Tên đăng nhập" aria-describedby="helpId">
+                                    <span id="helpId" class="text-muted">Yêu cầu tên đăng nhập</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_user">Mật khẩu</label>
+                                    <input type="password" name="password_user" id="" class="form-control" placeholder="Mật khẩu" aria-describedby="helpId">
+                                    <span id="helpId" class="text-muted">Yêu cầu mật khẩu</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nameuser">Họ và tên</label>
+                                    <input type="text" name="nameuser" id="" class="form-control" placeholder="Họ tên" aria-describedby="helpId">
+                                    <span id="helpId" class="text-muted">Yêu cầu họ tên</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone_number_user">SĐT</label>
+                                    <input type="phone"  id="" class="form-control" name="phone_number_user" placeholder="Số điện thoại" aria-describedby="helpId">
+                                    <span id="helpId" class="text-muted">Yêu cầu số điện thoại</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address_user">Địa chỉ nơi ở</label>
+                                    <input type="text" name="address_user" id="" class="form-control" placeholder="Địa chỉ thường trú" aria-describedby="helpId">
+                                    <span id="helpId" class="text-muted">Yêu cầu email</span>
+                                </div>
+                                <div class="form__request">
+                                    <span class="mr-2">Bạn đã có tài khoản rồi?</span>
+                                    <a href="login.html">Đăng nhập</a>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">
+                                    Đăng kí
+                                </button>
+                            </form>
                         </div>
-                        <form action="" method="post" class="p-3 form__control">
-                            <div class="form-group">
-                                <label for="username">Tên đăng nhập</label>
-                                <input type="text" name="" id="" class="form-control" placeholder="Tên đăng nhập" aria-describedby="helpId">
-                                <span id="helpId" class="text-muted">Yêu cầu tên đăng nhập</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Mật khẩu</label>
-                                <input type="password" name="" id="" class="form-control" placeholder="Mật khẩu" aria-describedby="helpId">
-                                <span id="helpId" class="text-muted">Yêu cầu mật khẩu</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">SĐT</label>
-                                <input type="phone" name="" id="" class="form-control" placeholder="Số điện thoại" aria-describedby="helpId">
-                                <span id="helpId" class="text-muted">Yêu cầu số điện thoại</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="" id="" class="form-control" placeholder="Email" aria-describedby="helpId">
-                                <span id="helpId" class="text-muted">Yêu cầu email</span>
-                            </div>
-                            <div class="form__request">
-                                <span class="mr-2">Bạn đã có tài khoản rồi?</span>
-                                <a href="">Đăng nhập</a>
-                            </div>
-                            <button class="btn btn-primary mt-2">
-                                Đăng kí
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
