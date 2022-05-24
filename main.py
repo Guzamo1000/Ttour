@@ -15,16 +15,10 @@ app.config["MYSQL_DATABASE_HOST"]="localhost"
 app.config["MYSQL_DATABASE_USER"]="root"
 app.config["MYSQL_DATABASE_PASSWORD"]="250201"
 app.config["MYSQL_DATABASE_DB"]="ttour"
-# mysql = MySQL()
+
 mysql.init_app(app)
 app.register_blueprint(admin)
 app.register_blueprint(user)
-
-
-
-# @app.route('/')
-# def default():
-#     return 'hello'
 
 if __name__ == "__main__":
     app.run(debug=true)

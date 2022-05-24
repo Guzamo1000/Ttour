@@ -3,18 +3,26 @@
 {% block content %} 
     
 <div id="slider" >
+
+        
     <div class="grid">
         <div class="slider__search">
             <h2 class="slider__search-title">
                 Tìm kiếm hành trình mới
             </h2>
             <form action="" method="post">
-                <div class="searchbar">
-                    <button href="userSearch.html" class="searchbar__button">
-                        <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <input type="text" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
-                    <input type = "file"></input>
+                <div>
+                    <div class="searchbar">
+                        <button href="userSearch.html" class="searchbar__button">
+                            <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <input type="text" name="key_search" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
+                        <input type = "file"></input>
+                       
+                    </div>
+                    <a type="submit" style="position: relative;" class="btn btn-danger">
+                        Tìm
+                    </a> 
                 </div>
             </form>
         </div>
@@ -55,18 +63,29 @@
 <div class="content">
     <div class="grid">
         <h3 class="content__title">
-            Tour hấp dẫn
+            <a   role="button">
+                Tour hấp dẫn
+            </a>
         </h3>
         <h4 class="content__subtitle">
             Yên tâm trải nghiệm
         </h4>
         <div class="grid__row">
-            <div class="grid__column-1 forward">
-                <button class="forward__button">
-                    <i class="forward__icon fa-solid fa-angle-left"></i>
-                </button>
+            {% for attract_tour in attract_tours %}
+            <form action="" method="POST">
+            <div class="tour grid__column-3-10 tour__item">
+                
+                <a href="/usertourdetail/{{attract_tour[0]}}" class="tour__item-link">
+                    <img src="../static/images/{{attract_tour[10]}}" alt="" class="tour__item-image">
+                    <span class="tour__item-price">{{attract_tour[6]}} VND</span>
+                    <p class="tour__item-desc">{{attract_tour[3]}}</p>
+                </a>
+                
             </div>
-            <div class="grid__column-3-10 tour__item">
+            </form>
+            {% endfor %}
+            
+            <!-- <div class="grid__column-3-10 tour__item">
                 <a href="" class="tour__item-link">
                     <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
                     <span class="tour__item-price">1.499.000 VND</span>
@@ -81,45 +100,36 @@
                     <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
                         Landmark 81</p>
                 </a>
-            </div>
-            <div class="grid__column-3-10 tour__item">
-                <a href="" class="tour__item-link">
-                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                    <span class="tour__item-price">1.499.000 VND</span>
-                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                        Landmark 81</p>
-                </a>
-            </div>
-            <div class="grid__column-1 forward">
-                <button class="forward__button">
-                    <i class="forward__icon fa-solid fa-angle-right"></i>
-                </button>
-            </div>
+            </div> -->
+            
         </div>
-        <div class="grid__row">
-            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
-                Xem tất cả
-                <i class="location__icon fa-solid fa-angle-right"></i>
-            </a>
-        </div>
+        
     </div>
 
 </div>
 <div class="content">
     <div class="grid">
         <h3 class="content__title">
-            Tour hiện có
+            <a  href="/tour" role="button">
+                Tour hiện có
+            </a>
         </h3>
         <h4 class="content__subtitle">
             Trải nghiệm đa dạng
         </h4>
         <div class="grid__row">
-            <div class="grid__column-1 forward">
-                <button class="forward__button">
-                    <i class="forward__icon fa-solid fa-angle-left"></i>
-                </button>
+            {% for tour in tours %}
+            <form action="" method="POST">
+            <div  class="grid__column-3-10 tour__item">
+                <a href="/usertourdetail/{{tour[0]}}" class="tour__item-link">
+                    <img src="../static/images/{{tour[10]}}" alt="" class="tour__item-image">
+                    <span class="tour__item-price">{{tour[6]}} VND</span>
+                    <p class="tour__item-desc">{{tour[3]}}</p>
+                </a>
             </div>
-            <div class="grid__column-3-10 tour__item">
+            </form>
+            {% endfor %}
+            <!-- <div class="grid__column-3-10 tour__item">
                 <a href="" class="tour__item-link">
                     <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
                     <span class="tour__item-price">1.499.000 VND</span>
@@ -134,27 +144,10 @@
                     <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
                         Landmark 81</p>
                 </a>
-            </div>
-            <div class="grid__column-3-10 tour__item">
-                <a href="" class="tour__item-link">
-                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                    <span class="tour__item-price">1.499.000 VND</span>
-                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                        Landmark 81</p>
-                </a>
-            </div>
-            <div class="grid__column-1 forward">
-                <button class="forward__button">
-                    <i class="forward__icon fa-solid fa-angle-right"></i>
-                </button>
-            </div>
+            </div> -->
+            
         </div>
-        <div class="grid__row">
-            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
-                Xem tất cả
-                <i class="location__icon fa-solid fa-angle-right"></i>
-            </a>
-        </div>
+        
     </div>
 </div>
 <div class="content">
@@ -166,7 +159,17 @@
             Bạn đã sẵn sàng  khám phá những địa điểm tốt nhất của chúng tôi
         </h4>
         <div class="grid__row">
-            <div class="grid__column-5">
+            {% for place in places %}
+            <form action="" method="POST">
+            <div class="grid__column-5 center">
+                <a href="" class="location__link">
+                    <img src="../static/images/{{place[0]}}" alt="" class="location-img">
+                    <p class="location-name">{{place[1]}}</p>
+                </a>
+            </div>
+            </form>
+            {% endfor %}
+            <!-- <div class="grid__column-5">
                 <a href="" class="location__link">
                     <img src="../static/images/halong.jpg" alt="" class="location-img">
                     <p class="location-name">Hạ Long</p>
@@ -174,34 +177,22 @@
             </div>
             <div class="grid__column-5">
                 <a href="" class="location__link">
-                    <img src="../static/images/halong.jpg" alt="" class="location-img">
-                    <p class="location-name">Hạ Long</p>
+                    <img src="../static/images/phuquoc.jpg" alt="" class="location-img">
+                    <p class="location-name">Phú Quốc</p>
                 </a>
             </div>
             <div class="grid__column-5">
                 <a href="" class="location__link">
-                    <img src="../static/images/halong.jpg" alt="" class="location-img">
-                    <p class="location-name">Hạ Long</p>
+                    <img src="../static/images/danang.jpg" alt="" class="location-img">
+                    <p class="location-name">Đà Nẵng</p>
                 </a>
             </div>
             <div class="grid__column-5">
                 <a href="" class="location__link">
-                    <img src="../static/images/halong.jpg" alt="" class="location-img">
-                    <p class="location-name">Hạ Long</p>
+                    <img src="../static/images/nhatrang.jpg" alt="" class="location-img">
+                    <p class="location-name">Nha Trang</p>
                 </a>
-            </div>
-            <div class="grid__column-5">
-                <a href="" class="location__link">
-                    <img src="../static/images/halong.jpg" alt="" class="location-img">
-                    <p class="location-name">Hạ Long</p>
-                </a>
-            </div>
-        </div>
-        <div class="grid__row">
-            <a name="" id="" class="btn mt-20 location__redirect-link" href="#" role="button">
-                Xem tất cả điểm đến
-                <i class="location__icon fa-solid fa-angle-right"></i>
-            </a>
+            </div> -->
         </div>
     </div>
 </div>

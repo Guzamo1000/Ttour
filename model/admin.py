@@ -5,7 +5,7 @@ from datetime import timedelta
 admin = Blueprint('admin', __name__)
 admin.permanent_session_lifetime = timedelta(minutes=1)
 @admin.route("/admin")
-@admin.route("/login",methods=['GET','POST'])
+@admin.route("/adminlogin",methods=['GET','POST'])
 def adminlogin():
     """ 
     Login account admin

@@ -49,14 +49,22 @@
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
                                     <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
+                                    {% if session['name_user'] %}
+                                    <p>{{session['name_user']}}</p>
+                                    {% else %}
+                                    <p>Chưa đăng nhập</p>
+                                    {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
-                                    <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                    <li href="/userinfo" class="header__navbar-user-item">
+                                        <a href="/userinfo" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Thông tin</button>
+                                        </a>
                                     </li>
                                     <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                        <a href="/userlogout" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng xuất</button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -77,19 +85,19 @@
                     </div>
                     <div class="grid__column-8">
                         <div class="manage-info__item">
-                            <span class="manage-info__label">Họ tên:</span>
+                            <span class="manage-info__label">Họ tên:  {{user[0][3]}}</span>
                             <span class="manage-info__content"></span>
                         </div>
                         <div class="manage-info__item">
-                            <span class="manage-info__label">Email:</span>
+                            <span class="manage-info__label">Tên đăng nhập:  {{user[0][1]}}</span>
                             <span class="manage-info__content"></span>
                         </div>
                         <div class="manage-info__item">
-                            <span class="manage-info__label">SĐT:</span>
+                            <span class="manage-info__label">SĐT:  {{user[0][4]}}</span>
                             <span class="manage-info__content"></span>
                         </div>
                         <div class="manage-info__item">
-                            <span class="manage-info__label">Địa chỉ:</span>
+                            <span class="manage-info__label">Địa chỉ:  {{user[0][5]}}</span>
                             <span class="manage-info__content"></span>
                         </div>
                     </div>
@@ -108,11 +116,48 @@
                                 <th>Loại phương tiện</th>
                                 <th>Khách sạn</th>
                                 <th>Tổng tiền(VND)</th>
-                                <th>Chức năng</th>
+                                <th>Trạng thái</th>
+                                <th>Hủy đặt tour</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {%for b in booking%}
+                            <form action="" method="POST">
+                                <tr>
+                                    <td>{{b[4]}}</td>
+                                    <td>{{b[6]}}</td>
+                                    <td>{{b[7]}}</td>
+                                    <td>{{b[8]}}</td>
+                                    <td>{{b[9]}}</td>
+                                    <td>{{b[5]*b[7]}}</td>
+                                    <td>
+                                        <div class="admin-manage__info-item">
+                                            
+                                            {%if b[10] == 0%}
+                                                Chưa được xác nhận
+                                            {%endif%}
+                                            {%if b[10] == 1%}
+                                                Đã được xác nhận
+                                            {%endif%}
+                                            {%if b[10]==2%}
+                                                Đã hủy
+                                            {%endif%}
+                                
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        {%if b[10] == 0%}
+                                            <a href="/usercanceltour/{{b[0]}}" class="btn btn-danger">
+                                                Hủy
+                                            </a>
+                                        {%endif%}
+
+                                    </td>
+                                </tr>
+                            </from>
+                            {%endfor%}
+                            <!-- <tr>
                                 <td>Du lịch sapa</td>
                                 <td>30/03/2022</td>
                                 <td>4</td>
@@ -124,26 +169,11 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Du lịch sapa</td>
-                                <td>30/03/2022</td>
-                                <td>4</td>
-                                <td>Oto</td>
-                                <td>Mimosa hotel sapa</td>
-                                <td>6.000.000</td>
-                                <td>
-                                    <a href="" class="btn btn-danger">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
-                <div class="grid__row delete-button__container">
-                    <a href="" class="btn btn-danger">Xóa tất cả</a>
-                </div>
+                
             </div>
         </div>
         <footer>
@@ -186,26 +216,26 @@
     <div class="modal js-modal">
         <div class="modal__body">
             <div class="manage__form js-info-form">
-                <form action="" method="post">
+                <form action="/userchangeinfo" method="POST">
                     <div class="form__item">
                         <span class="form__label">Họ tên</span>
-                        <input type="text" class="form__input">
+                        <input type="text" name="name_user" value="{{user[0][3]}}" class="form__input">
                     </div>
                     <div class="form__item">
-                        <span class="form__label">Email</span>
-                        <input type="text" class="form__input">
+                        <span class="form__label">Tên đăng nhập</span>
+                        <input type="text" name="user_name" value="{{user[0][1]}}" disabled class="form__input">
                     </div>
                     <div class="form__item">
                         <span class="form__label">SĐT</span>
-                        <input type="text" class="form__input">
+                        <input type="text" name="phone_number" value="{{user[0][5]}}" class="form__input">
                     </div>
                     <div class="form__item">
                         <span class="form__label">Địa chỉ</span>
-                        <input type="text" class="form__input">
+                        <input type="text" name="user_address" value="{{user[0][4]}}" class="form__input">
                     </div>
                     <div class="form__buttons">
-                        <button class="btn form__button">Lưu</button>
-                        <a href="" class="btn form__button">Thoát</a>
+                            <button type="submit" class="btn form__button">Lưu</button>
+                            <a href="" class="btn form__button">Thoát</a>
                     </div>
                 </form>
             </div>
@@ -235,25 +265,20 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userhome" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userinfo" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Thông tin</span>
                         </a>
                     </li>
+                    
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/tour" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-location-dot"></i>
                             <span class="header__menu-item-text">Tour</span>
                         </a>

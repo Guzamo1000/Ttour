@@ -46,14 +46,22 @@
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
                                     <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
+                                    {% if session['name_user'] %}
+                                    <p>{{session['name_user']}}</p>
+                                    {% else %}
+                                    <p>Chưa đăng nhập</p>
+                                    {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
                                     <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                        <a href="/userinfo" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Thông tin</button>
+                                        </a>
                                     </li>
                                     <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                        <a href="/userlogout" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng xuất</button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -62,136 +70,143 @@
                 </div>
             </div>
         </header>
-        <div class="grid">
-            <div class="tour-detail__info">
-                <h2 class="tour-detail__title">
-                    Combo du lịch trải nghiệm đài quan sát SkyView tại Vincom Center Landmark 81 
-                </h2>
-                <div class="tour-detail__info-item-wrapper">
-                    <div class="tour-detail__info-pay">
-                        <span class="tour-detail__info-total">1.499.000</span>
-                        <span class="tour-detail__info-currency">VND / Khách</span>
-                    </div>
-                    <a href="" class="btn btn-warning mr-16"> 
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="tour-detail__info-text">Đặt ngay</span>
-                    </a>
-                    <a href="" class="btn btn-info">
-                        <span class="tour-detail__info-text">Liên hệ tư vấn</span>
-                    </a>
-                </div>
-           </div>
-           <div class="tour-detail__images">
-               <div class="grid__row">
-                    <div class="grid__column-6">
-                        <img src="../static/images/landmark.jpg" alt="" class="tour-detail__image">
-                        <img src="../static/images/landmark.jpg" alt="" class="tour-detail__image">
-                    </div>
-                    <div class="grid__column-6">
-                        <img src="../static/images/landmark.jpg" alt="" class="tour-detail__image">
-                        <img src="../static/images/landmark.jpg" alt="" class="tour-detail__image">
-                    </div>
-               </div>
-           </div>
-        </div>
-        <div class="content">
             <div class="grid">
-                <div class="content__title">
-                    Miêu tả
-                </div>
-                <div class="content__paragraph--custom">
-                    sjkdhgfdjhgdjfdk
-                </div>
-                <div class="content__title">
-                    Những điều cần lưu ý
-                </div>
-                <div class="tour__note">
-                    <div class="grid__row">
-                        <div class="grid__column-2 tour__note-item">
-                            <div class="tour__note-wrapper">
-                                <div class="tour__note-title">
-                                    Giá tour bao gồm
-                                </div>
-                                <div class="tour__note-content">
-                                    <p class="tour__note-line">
-                                        - Xe tham quan(7, 16, 29, 35, 45 chỗ tùy theo số lượng khách)
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Khách sạn theo tiêu chuẩn (2 khách/1 phòng, 3 khách/1 phòng)
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Tương đương 3 sao:
-                                    </p>
-                                    <p class="tour__note-line">
-                                        <i class="tour__note-icon fa-solid fa-circle-dot"></i> Nha Trang: Paris, Edele, Happy Light, Summer, Angela, Diamond
-                                    </p>
-                                    <p class="tour__note-line">
-                                        <i class="tour__note-icon fa-solid fa-circle-dot"></i> Đà Lạt: Đà Lạt Plaza, Edele, Mai Vàng, Diamond,...
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Tương đương 4 sao:
-                                    </p>
-                                    <p class="tour__note-line">
-                                        <i class="tour__note-icon fa-solid fa-circle-dot"></i> Nha Trang: Bonjour, Liberty Center, Galina, Poseidon,...
-                                    </p>
-                                    <p class="tour__note-line">
-                                        <i class="tour__note-icon fa-solid fa-circle-dot"></i> Đà Lạt: Mường Thanh, La Sapinette, Ngọc Lan, Sammy
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Vé thăm quan theo tour chính:
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Ăn theo chương trình: chỉ từ 100.000-300.000
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Hướng dẫn viên tiếng Việt suốt tour
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Bảo hiểm du lịch cao nhất 120 triệu đồng/vụ
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Nón T.Travel + Nước suối + Khăn lạnh
-                                    </p>
-                                    <p class="tour__note-line">
-                                        - Thuế VAT
-                                    </p>
-                                </div>
-                            </div>
+                
+                <div class="tour-detail__info">
+                    <h2 class="tour-detail__title">
+                        {{tour[0][3]}}
+                    </h2>
+                    <div class="tour-detail__info-item-wrapper">
+                        <div class="tour-detail__info-pay">
+                            <span class="tour-detail__info-total">{{tour[0][6]}}</span>
+                            <span class="tour-detail__info-currency">VND / Khách</span>
                         </div>
-                        <div class="grid__column-1"></div>
-                        <div class="grid__column-2 tour__note-item">
-                            <div class="tour__note-wrapper">
-                                <div class="tour__note-title">
-                                    Lưu ý khi chuyển/hủy tour
-                                </div>
-                                <div class="tour__note-content">
-                                    <p class="tour__note-line">
-                                        - Sau khi đóng tiền, nếu quý khách muốn chuyển hoặc hủy tour xin vui lòng mang vé du lịch 
-                                        đến văn phòng đăng ký tour để làm thủ tục chuyển/hủy tour và chịu ất phí theo quy định của T.Travel. 
-                                        Không giải quyết các trường hợp liên hệ chuyển chéo/hủy tour qua điên thoại
-                                    </p>                                  
-                                </div>                             
-                            </div>
+                        <a href="" class="btn btn-warning mr-16"> 
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="tour-detail__info-text">Đặt ngay</span>
+                        </a>
+                        <a href="https://www.facebook.com/dulichtoptravelvn/" class="btn btn-info">
+                            <span class="tour-detail__info-text">Liên hệ tư vấn</span>
+                        </a>
+                    </div>
+            </div>
+            <div class="tour-detail__images">
+                <div class="grid__row">
+                        <div class="grid__column-6">
+                            <img src="../static/images/{{tour[0][10]}}" alt="" class="tour-detail__image">
+                            <img src="../static/images/{{tour[0][11]}}" alt="" class="tour-detail__image">
                         </div>
-                    </div>
-                </div>
-                <div class="rating-stars__wrapper">
-                    <span class="rating-stars__title">Đánh giá sao:</span>
-                    <div class="rating-stars">
-                        <span>
-                            <input class="star__icon" type="radio" name="rating" id="rs0" checked><label for="rs0" class="star__label"></label>
-                            <input class="star__icon" type="radio" name="rating" id="rs1"><label for="rs1" class="star__label"></label>
-                            <input class="star__icon" type="radio" name="rating" id="rs2"><label for="rs2" class="star__label"></label>
-                            <input class="star__icon" type="radio" name="rating" id="rs3"><label for="rs3" class="star__label"></label>
-                            <input class="star__icon" type="radio" name="rating" id="rs4"><label for="rs4" class="star__label"></label>
-                            <input class="star__icon" type="radio" name="rating" id="rs5"><label for="rs5" class="star__label"></label>
-                        </span>
-        
-                    </div>
+                        <div class="grid__column-6">
+                            <img src="../static/images/{{tour[0][12]}}" alt="" class="tour-detail__image">
+                            <img src="../static/images/{{tour[0][13]}}" alt="" class="tour-detail__image">
+                        </div>
                 </div>
             </div>
+            </div>
+            <div class="content">
+                <div class="grid">
+                    <div class="content__title">
+                        Miêu tả
+                    </div>
+                    <div class="content__paragraph--custom">
+                        {{tour[0][7]}}
+                    </div>
+                    <div class="content__title">
+                        Lịch trình
+                    </div>
+                    <div class="content__paragraph--custom">
+                        {{tour[0][8]}}
+                    </div>
+                    <div class="content__title">
+                        Những điều cần lưu ý
+                    </div>
+                    <div class="tour__note">
+                        <div class="grid__row">
+                            <div class="grid__column-2 tour__note-item">
+                                <div class="tour__note-wrapper">
+                                    <div class="tour__note-title">
+                                        Giá tour bao gồm
+                                    </div>
+                                    <div class="tour__note-content">
+                                        <p class="tour__note-line">
+                                            - Xe tham quan(7, 16, 29, 35, 45 chỗ tùy theo số lượng khách)
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Khách sạn theo tiêu chuẩn (2 khách/1 phòng, 3 khách/1 phòng)
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Tương đương 3 sao:
+                                        </p>
+                                        <p class="tour__note-line">
+                                            <i class="tour__note-icon fa-solid fa-circle-dot"></i> Nha Trang: Paris, Edele, Happy Light, Summer, Angela, Diamond
+                                        </p>
+                                        <p class="tour__note-line">
+                                            <i class="tour__note-icon fa-solid fa-circle-dot"></i> Đà Lạt: Đà Lạt Plaza, Edele, Mai Vàng, Diamond,...
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Tương đương 4 sao:
+                                        </p>
+                                        <p class="tour__note-line">
+                                            <i class="tour__note-icon fa-solid fa-circle-dot"></i> Nha Trang: Bonjour, Liberty Center, Galina, Poseidon,...
+                                        </p>
+                                        <p class="tour__note-line">
+                                            <i class="tour__note-icon fa-solid fa-circle-dot"></i> Đà Lạt: Mường Thanh, La Sapinette, Ngọc Lan, Sammy
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Vé thăm quan theo tour chính:
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Ăn theo chương trình: chỉ từ 100.000-300.000
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Hướng dẫn viên tiếng Việt suốt tour
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Bảo hiểm du lịch cao nhất 120 triệu đồng/vụ
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Nón T.Travel + Nước suối + Khăn lạnh
+                                        </p>
+                                        <p class="tour__note-line">
+                                            - Thuế VAT
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid__column-1"></div>
+                            <div class="grid__column-2 tour__note-item">
+                                <div class="tour__note-wrapper">
+                                    <div class="tour__note-title">
+                                        Lưu ý khi chuyển/hủy tour
+                                    </div>
+                                    <div class="tour__note-content">
+                                        <p class="tour__note-line">
+                                            - Sau khi đóng tiền, nếu quý khách muốn chuyển hoặc hủy tour xin vui lòng mang vé du lịch 
+                                            đến văn phòng đăng ký tour để làm thủ tục chuyển/hủy tour và chịu ất phí theo quy định của T.Travel. 
+                                            Không giải quyết các trường hợp liên hệ chuyển chéo/hủy tour qua điên thoại
+                                        </p>                                  
+                                    </div>                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rating-stars__wrapper">
+                        <span class="rating-stars__title">Đánh giá sao:</span>
+                        <div class="rating-stars">
+                            <span>
+                                <input class="star__icon" type="radio" name="rating" id="rs0" checked><label for="rs0" class="star__label"></label>
+                                <input class="star__icon" type="radio" name="rating" id="rs1"><label for="rs1" class="star__label"></label>
+                                <input class="star__icon" type="radio" name="rating" id="rs2"><label for="rs2" class="star__label"></label>
+                                <input class="star__icon" type="radio" name="rating" id="rs3"><label for="rs3" class="star__label"></label>
+                                <input class="star__icon" type="radio" name="rating" id="rs4"><label for="rs4" class="star__label"></label>
+                                <input class="star__icon" type="radio" name="rating" id="rs5"><label for="rs5" class="star__label"></label>
+                            </span>
             
-        </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>              
         <footer>
             <div class="footer-link__wrapper">
                 <div class="footer-social-area">
@@ -234,25 +249,20 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userhome" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userinfo" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Thông tin</span>
                         </a>
                     </li>
+                    
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/tour" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-location-dot"></i>
                             <span class="header__menu-item-text">Tour</span>
                         </a>
