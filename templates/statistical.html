@@ -21,20 +21,10 @@
             theme: 'snow'
         });
     </script>
-    <style>
-        table tr:not(:first-child) {
-            cursor: pointer;
-            transition: all .25s ease-in-out;
-        }
-
-        table tr:not(:first-child):hover {
-            background-color: #ddd;
-        }
-    </style>
 </head>
 
 <body>
-
+    <!-- Tiêu đề -->
 
     <header id="header">
         <div class="grid">
@@ -64,135 +54,59 @@
 
                     <li class="header__navbar-item">
                         <div class="header__navbar-user">
-                            <div class="header__navbar-title">
-                                <i class="header__icon fa-solid fa-user"></i>
-                                    {{nameadmin}}
-                            </div>
-                            <ul class="header__navbar-user-list">
-                                <li class="header__navbar-user-item">
-                                    <a href="/logout" class="header__menu-link">
-                                        <button class="header__navbar-button js-register-button">Đăng xuất</button>
-                                    </a>
-                                </li>
-                            </ul>
+                            {%if nameadmin!=None%}
+                                <div class="header__navbar-title">
+                                    <i class="header__icon fa-solid fa-user"></i>
+                                        {{nameadmin}}
+                                </div>
+                                <ul class="header__navbar-user-list">
+                                    <li class="header__navbar-user-item">
+                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                    </li>
+                                    <li class="header__navbar-user-item">
+                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                    </li>
+                                </ul>
+                            {%endif%}
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </header>
-    <!-- Phần thân trang web -->
-
-    <div id="admin-manage">
-        <div class="grid">
-            <h1 class="admin-manage__title">Quản lý tài khoản</h1>
-            <div class="admin-manage__select">
-                <span class="admin-manage__select-title">
-                    Sắp xếp theo:
-                </span>
-                <select class="admin-manage__selection" placeholder="Sắp xếp theo tên">
-                    <option value="name">Tên</option>
-                    <option value="quantity">Số Tour</option>
-                </select>
-            </div>
-            <table id="table" class="table table-striped table-inverse table-responsive text-justify">
-                <thead class="thead-inverse thead-dark text-white">
-                    <tr>
-                        <th>ID</th>
-                        <th>Họ tên</th>
-                        <th>Địa chỉ</th>
-                        <th>SĐT</th>
-                        <!-- <th>Trạng thái</th>
-                        <th>Chức năng</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr></tr>
-                    {% for u in user %}
-                    <tr>
-                        <th>{{u[0]}}</th>
-                        <th>{{u[1]}}</th>
-                        <th>{{u[2]}}</td>
-                        <th>{{u[3]}}</th>
-                        <!-- <th>3</th>
-                        <th>
-                            <a href="#" class="btn btn-primary btn-warning" id="btn-edit-1">
-
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a href="admin/user/delete/{$user.id}" class="btn btn-primary btn-danger">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
-                        </th> -->
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="admin-manage__detail">
-                <h3 class="admin-manage__detail-title">Thông tin chi tiết khách đặt tour</h3>
-                <div class="admin-manage__info">
-                    <form action="/adminuser" method="POST">
-
-
-                        <div class="admin-manage__info-item-wrapper">
-                            <div class="admin-manage__info-item">
-                                ID:<input type="text" name="U_id" id="U_id"><br><br>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <!-- <span class="admin-manage__info-title">Họ tên:</span>
-                            <span class="admin-manage__info-content" id="name" id="name"></span> -->
-                                Name:<input type="text" name="name" id="name"><br><br>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <!-- <span class="admin-manage__info-title">Địa chỉ:</span>
-                            <span class="admin-manage__info-content" id="address" name="address"></span> -->
-                                Address:</Address>:<input type="text" name="address" id="address"><br><br>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <!-- <span class="admin-manage__info-title">SĐT:</span>
-                            <span class="admin-manage__info-content" id="numberphone" name="numberphone"></span> -->
-                                SĐT:<input type="text" name="numberphone" id="numberphone"><br><br>
-                            </div>
-
-                        </div>
-                        <button type="submit" class="admin-manage__action-button">Xác nhận</button>
-                        <table class="table table-striped table-inverse table-responsive text-justify">
-                            <thead class="thead-inverse thead-dark text-white">
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Tour</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Số thành viên</th>
-                                    <!-- <th>Liên hệ</th> -->
-                                    <th>Thành tiền</th>
-                                    <th>Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {%if history!=none%}
-                                {% for hist in history %}
-                                <tr>
-                                    <td>{{hist[1]}}</td>
-                                    <td>{{hist[2]}}</td>
-                                    <td>{{hist[3]}}</td>
-                                    <td>{{hist[4]}}</td>
-                                    <td>{{hist[5]}}</td>
-                                    <td>{{hist[6]}}</td>
-                                    <!-- <td>3.000.000</td> -->
-                                </tr>
-                                {%endfor%}
-                                {%endif%}
-                                {%if history==none%}
-                                    <td>Khách hàng này chưa đặt tour nào :(((</td>
-                                {%endif%}
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <head>
+        <script type="text/javascript">
+        window.onload = function () {
+          var chart = new CanvasJS.Chart("chartContainer",
+          {
+            title:{
+              text: "Top Oil Reserves"
+            },
+            data: [
+      
+            {
+              dataPoints: [
+              { x: 1, y: 297571, label: "Venezuela"},
+              { x: 2, y: 267017,  label: "Saudi" },
+              { x: 3, y: 175200,  label: "Canada"},
+              { x: 4, y: 154580,  label: "Iran"},
+              { x: 5, y: 116000,  label: "Russia"},
+              { x: 6, y: 97800, label: "UAE"},
+              { x: 7, y: 20682,  label: "US"},
+              { x: 8, y: 20350,  label: "China"}
+              ]
+            }
+            ]
+          });
+      
+          chart.render();
+        }
+        </script>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script></head>
+        <body>
+         <div id="chartContainer" style="height: 300px; width: 100%;">
+         </div>
+       </body>
     <!-- Thông tin màu xanh cuối trang -->
     <footer>
         <div class="footer-link__wrapper">
@@ -236,13 +150,13 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="admin" class="header__menu-link">
+                        <a href="/" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="admin" class="header__menu-link">
+                        <a href="/adminuser" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Quản lý tài khoản</span>
                         </a>
@@ -305,22 +219,6 @@
             event.stopPropagation();
         });
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        var table = document.getElementById('table');
-
-        for (var i = 0; i <= table.rows.length; i++) {
-            table.rows[i].onclick = function () {
-                //rIndex = this.rowIndex; 
-                document.getElementById("U_id").value=this.cells[0].innerHTML;
-                document.getElementById("name").value = this.cells[1].innerHTML;
-                document.getElementById("address").value = this.cells[2].innerHTML;
-                document.getElementById("numberphone").value = this.cells[3].innerHTML;
-               
-            };
-        }
-    </script>
-
 </body>
 
 </html>

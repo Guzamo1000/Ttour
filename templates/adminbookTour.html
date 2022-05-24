@@ -75,13 +75,7 @@
         </div>
     </header>
     <!-- Phần thân trang web -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for m in messages %}
-            <P>{{m}}</P>
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
+
     <div id="admin-manage">
         <div class="grid">
             <h1 class="admin-manage__title">Quản lý Tour</h1>
@@ -95,49 +89,114 @@
                         <option value="quantity">Số Tour</option>
                     </select>
                 </div>
-                <a href="/admintour">
+                <!-- <a href="/addtour">
                     <button class="admin-manage__action-button">
                         Thêm mới
                     </button>
-                </a>
+                </a> -->
             </div>
+            <!-- <table class="admin-manage__table table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr class="admin-manage__table-attribute">
+                        <th>STT</th>
+                        <th>Tour</th>
+                        <th>Miêu tả</th>
+                        <th>Khách sạn</th>
+                        <th>Phương tiện</th>
+                        <th>Giá vé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="admin-manage__table-item">
+                        <td><input type="button" value="1"> </td>
+                        <td><input type="button" value="Nguyễn Công Hậu"></td>
+                        <td><input type="button" value="Số 20 Ngõ 4,Nguyễn Văn Khuyến, Hà Nam"></td>
+                        <td><input type="button" value="0123456789"></td>
+                        <td><input type="button" value="3"></td>
+                        <td>
+                            <button class="admin-manage__table-item-button">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="admin-manage__table-item">
+                        <td><input type="button" value="2"> </td>
+                        <td><input type="button" value="Nguyễn Công Hậu"></td>
+                        <td><input type="button" value="Số 20 Ngõ 4,Nguyễn Văn Khuyến, Hà Nam"></td>
+                        <td><input type="button" value="0123456789"></td>
+                        <td><input type="button" value="3"></td>
+                        <td>
+                            <button class="admin-manage__table-item-button">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="admin-manage__table-item">
+                        <td><input type="button" value="3"> </td>
+                        <td><input type="button" value="Nguyễn Công Hậu"></td>
+                        <td><input type="button" value="Số 20 Ngõ 4,Nguyễn Văn Khuyến, Hà Nam"></td>
+                        <td><input type="button" value="0123456789"></td>
+                        <td><input type="button" value="3"></td>
+                        <td>
+                            <button class="admin-manage__table-item-button">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
             <table class="table table-striped table-inverse table-responsive text-justify">
                 <thead class="thead-inverse thead-dark text-white">
                     <tr>
                         <th>Id</th>
-                        <th>Khách sạn</th>
-                        <th>Miêu tả</th>
-                        <th>Phương tiện</th>
-                        <th>Gía vé</th>
+                        <th>Tên khách hàng</th>
+                        <th>Tên tour đã đặt</th>
+                        <th>Giá</th>
+                        <th>Thời gian đặt</th>
+                        <th>Trạng thái</th>
                         <th>Chức năng</th>
                     </tr>
                 </thead>
                 <from>
-                    {%for t in tour%}
+                    {%for b in booking%}
                     <form action="" method="POST">
                         <tr>
-                            <td>{{t[0]}}</td>
-                            <td>{{t[1]}}</td>
-                            <td>{{t[2]}}</td>
-                            <td>{{t[3]}}</td>
-                            <td>{{t[4]}}</td>
+                            <td>{{b[2]}}</td>
+                            <td>{{b[3]}}</td>
+                            <td>{{b[4]}}</td>
+                            <td>{{b[5]}}</td>
+                            <td>{{b[6]}}</td>
+                            <td>{{b[7]}}</td>
                             <td>
-                                <a type="submit" href="/edittour/{{t[0]}}" class="btn btn-primary btn-warning">
+                                <a type="submit" href="/{{b[0]}}/{{b[1]}}" class="btn btn-primary btn-warning">
                                     <!-- <i class="fa-solid fa-eye"></i> -->
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a type="submit" href="/remove/{{t[0]}}" class="btn btn-primary btn-warning">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
+
                             </td>
                         </tr>
                 </from>
                 {%endfor%}
-              
+                <!-- <tr>
+                            <td>1</td>
+                            <td>Nguyễn Công Hậu</td>
+                            <td>Số 20 Ngõ 4,Nguyễn Văn Khuyễn, Hà Nam</td>
+                            <td>0123456789</td>
+                            <td>3</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-warning">
+                                    <!-- <i class="fa-solid fa-eye"></i> -->
+                <!-- <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a href="" class="btn btn-primary btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr> -->
                 </tbody>
             </table>
             <div class="admin-manage__detail">
-                <h3 class="admin-manage__detail-title">Thêm mới Tour</h3>
+                <h3 class="admin-manage__detail-title">Thông tin tour đặt</h3>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for m in messages %}
@@ -145,72 +204,80 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-                <form action="/edittour/{{T_id}}" method="post">
+                <form action="/{{U_id}}/{{T_id}}" method="post">
                     <div class="admin-manage__info">
                         <div class="admin-manage__info-item-wrapper">
                             <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Địa điểm:</span>
-                                <select class="admin-manage__info-input" placeholder="Chọn địa điểm" name="place">
-                                    {%for i in place%}
-                                        {%if i[0]==infor_tour[0][0]%}
-                                        <option value={{i[0]}} selected="selected">
-                                            {{i[1]}}
+                                <span class="admin-manage__info-label">Tên Khách hàng:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Tên khách hàng"
+                                    name="nameuser" value="{{infor_order[0][0]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Tên tour:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Tên tour
+                                    name="nametour" value="{{infor_order[0][1]}}"></input>
+
+            
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Phương tiện</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Nhập phương tiện"
+                                    name="vehicle" value="{{infor_order[0][2]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Thời gian đặt:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Nhập thời gian"
+                                    name="time_order" value="{{infor_order[0][3]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Giá vé:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Nhập giá vé"
+                                    name="price" value="{{infor_order[0][4]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Số người:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="Số người"
+                                    name="AmountPeople" value="{{infor_order[0][5]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">SĐT:</span>
+                                <input type="text" class="admin-manage__info-input" placeholder="SĐT"
+                                    name="numberphone" value="{{infor_order[0][6]}}"></input>
+                            </div>
+                            <div class="admin-manage__info-item">
+                                <span class="admin-manage__info-label">Trạng thái:</span>
+                                <select class="admin-manage__info-input" placeholder="Trạng thái" name="status">
+                                    {%for i in range(3)%}
+                                        {%if i==infor_order[0][7]%}
+                                        <option value={i} selected="selected">
+                                            {%if i == 0%}
+                                                Đã đặt
+                                            {%endif%}
+                                            {%if i ==1%}
+                                                Đã được xác nhận
+                                            {%endif%}
+                                            {%if i==2%}
+                                                Đã hủy
+                                            {%endif%}
                                         </option>
                                         {%endif%}
-                                        {%if i[0]!= infor_tour[0][0]%}
-                                        <option value={{i[0]}} >
-                                            {{i[1]}}
+                                        {%if i!= infor_order[0][7]%}
+                                        <option value={{i}} >
+                                            {%if i == 0%}
+                                                Đã đặt
+                                            {%endif%}
+                                            {%if i ==1%}
+                                                Đã được xác nhận
+                                            {%endif%}
+                                            {%if i==2%}
+                                                Đã hủy
+                                            {%endif%}
                                         </option>
                                         {%endif%}
                                     {%endfor%}
                                 </select>
                             </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Tên tour:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Tên tour"
-                                    name="nametour" value="{{infor_tour[0][2]}}"></input>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Tên khách sạn:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Tên khách sạn"
-                                    name="namehotel" value="{{infor_tour[0][3]}}"></input>
-
-                                <!-- <input type="text" class="admin-manage__info-input" placeholder="Tên khách sạn"></input> -->
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Phương tiện:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Nhập phương tiện"
-                                    name="vehicle" value="{{infor_tour[0][4]}}"></input>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Thời gian:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Nhập thời gian"
-                                    name="time_tour" value="{{infor_tour[0][5]}}"></input>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Giá vé:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Nhập giá vé"
-                                    name="price" value="{{infor_tour[0][6]}}"></input>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Lịch trình:</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Lịch trình"
-                                    name="schedule" value="{{infor_tour[0][7]}}"></input>
-                            </div>
-                            <div class="admin-manage__info-item">
-                                <span class="admin-manage__info-label">Miêu tả</span>
-                                <input type="text" class="admin-manage__info-input" placeholder="Miêu tả"
-                                    name="describe" value="{{infor_tour[0][8]}}"></input>
-                            </div>
-                                <dl>
-                                    <p>
-                                        <input type="file" name="files[]" multiple="true" autocomplete="off" required>
-                                    </p>
-                                </dl>
-                            </div>
-                          
                         </div>
-
                     </div>
 
                     <div class="admin-manage__editor">
@@ -264,7 +331,7 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="/" class="header__menu-link">
+                        <a href="admin" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
