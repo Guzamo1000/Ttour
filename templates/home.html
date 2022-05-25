@@ -1,10 +1,8 @@
 {% extends "userBase.html" %}
 {% block title %}Page T.Travel{% endblock %}
-{% block content %} 
-    
-<div id="slider" >
+{% block content %}
 
-        
+<div id="slider">
     <div class="grid">
         <div class="slider__search">
             <h2 class="slider__search-title">
@@ -17,11 +15,11 @@
                             <i class="searchbar__icon fa-solid fa-magnifying-glass"></i>
                         </button>
                         <input type="text" name="key_search" class="searchbar__input" placeholder="Tìm kiếm địa điểm">
-                        <input type = "file"></input>
-                       
+                        <input type="file"></input>
+
                     </div>
                     <a href="/usersearch">
-                        <button type="submit" class="btn btn-primary mt-2">
+                        <button type="submit" class="btn btn-primary mt-16">
                             Tìm
                         </button>
                     </a>
@@ -65,7 +63,7 @@
 <div class="content">
     <div class="grid">
         <h3 class="content__title">
-            <a   role="button">
+            <a role="button">
                 Tour hấp dẫn
             </a>
         </h3>
@@ -74,19 +72,19 @@
         </h4>
         <div class="grid__row">
             {% for attract_tour in attract_tours %}
-            <form action="" method="POST">
-            <div class="tour grid__column-3-10 tour__item">
-                
-                <a href="/usertourdetail/{{attract_tour[0]}}" class="tour__item-link">
-                    <img src="../static/images/{{attract_tour[10]}}" alt="" class="tour__item-image">
-                    <span class="tour__item-price">{{attract_tour[6]}} VND</span>
-                    <p class="tour__item-desc">{{attract_tour[3]}}</p>
-                </a>
-                
-            </div>
+            <form action="" method="POST" class="grid__row">
+                <div class="tour grid__column-3-10 tour__item">
+
+                    <a href="/usertourdetail/{{attract_tour[0]}}" class="tour__item-link">
+                        <img src="../static/images/{{attract_tour[10]}}" alt="" class="tour__item-image">
+                        <span class="tour__item-price">{{attract_tour[6]}} VND</span>
+                        <p class="tour__item-desc">{{attract_tour[3]}}</p>
+                    </a>
+
+                </div>
             </form>
             {% endfor %}
-            
+
             <!-- <div class="grid__column-3-10 tour__item">
                 <a href="" class="tour__item-link">
                     <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
@@ -103,53 +101,51 @@
                         Landmark 81</p>
                 </a>
             </div> -->
-            
+
         </div>
-        
+
     </div>
 
 </div>
 <div class="content">
     <div class="grid">
         <h3 class="content__title">
-            <a  href="/tour" role="button">
+            <a href="/tour" role="button">
                 Tour hiện có
             </a>
         </h3>
         <h4 class="content__subtitle">
             Trải nghiệm đa dạng
         </h4>
-        <div class="grid__row">
-            {% for tour in tours %}
-            <form action="" method="POST">
-            <div  class="grid__column-3-10 tour__item">
+        {% for tour in tours %}
+        <form action="" method="POST" class="grid__row">
+            <div class="grid__column-3-10 tour__item">
                 <a href="/usertourdetail/{{tour[0]}}" class="tour__item-link">
                     <img src="../static/images/{{tour[10]}}" alt="" class="tour__item-image">
                     <span class="tour__item-price">{{tour[6]}} VND</span>
                     <p class="tour__item-desc">{{tour[3]}}</p>
                 </a>
             </div>
-            </form>
-            {% endfor %}
             <!-- <div class="grid__column-3-10 tour__item">
-                <a href="" class="tour__item-link">
-                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                    <span class="tour__item-price">1.499.000 VND</span>
-                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                        Landmark 81</p>
-                </a>
-            </div>
-            <div class="grid__column-3-10 tour__item">
-                <a href="" class="tour__item-link">
-                    <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                    <span class="tour__item-price">1.499.000 VND</span>
-                    <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                        Landmark 81</p>
-                </a>
-            </div> -->
-            
-        </div>
-        
+                        <a href="" class="tour__item-link">
+                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                            <span class="tour__item-price">1.499.000 VND</span>
+                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                                Landmark 81</p>
+                        </a>
+                    </div>
+                    <div class="grid__column-3-10 tour__item">
+                        <a href="" class="tour__item-link">
+                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                            <span class="tour__item-price">1.499.000 VND</span>
+                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                                Landmark 81</p>
+                        </a>
+                    </div> -->
+        </form>
+        {% endfor %}
+
+
     </div>
 </div>
 <div class="content">
@@ -158,20 +154,19 @@
             Điểm đến địa phương
         </h3>
         <h4 class="content__subtitle">
-            Bạn đã sẵn sàng  khám phá những địa điểm tốt nhất của chúng tôi
+            Bạn đã sẵn sàng khám phá những địa điểm tốt nhất của chúng tôi
         </h4>
-        <div class="grid__row">
-            {% for place in places %}
-            <form action="" method="POST">
+        {% for place in places %}
+        <form action="" method="POST" class="grid__row">
             <div class="grid__column-5 center">
                 <a href="" class="location__link">
                     <img src="../static/images/{{place[0]}}" alt="" class="location-img">
                     <p class="location-name">{{place[1]}}</p>
                 </a>
             </div>
-            </form>
-            {% endfor %}
-            <!-- <div class="grid__column-5">
+        </form>
+        {% endfor %}
+        <!-- <div class="grid__column-5">
                 <a href="" class="location__link">
                     <img src="../static/images/halong.jpg" alt="" class="location-img">
                     <p class="location-name">Hạ Long</p>
@@ -195,7 +190,6 @@
                     <p class="location-name">Nha Trang</p>
                 </a>
             </div> -->
-        </div>
     </div>
 </div>
 <div class="content">
@@ -220,7 +214,7 @@
         </ul>
         <ul class="fav-location-list">
             <li class="fav-location-item">
-                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
             </li>
             <li class="fav-location-item">
                 <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
@@ -234,7 +228,7 @@
         </ul>
         <ul class="fav-location-list">
             <li class="fav-location-item">
-                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>                       
+                <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
             </li>
             <li class="fav-location-item">
                 <a href="" class="fav-location-link">Trải nghiệm Đà Nẵng</a>
@@ -248,5 +242,5 @@
         </ul>
     </div>
 </div>
+
 {% endblock %}
-      

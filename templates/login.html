@@ -19,6 +19,27 @@
             </a>
         </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for cat, mess in messages %}
+                    {% if cat == "error" %}
+                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     <section class="content mt-5">
         <div class="container">
             <div class="row">

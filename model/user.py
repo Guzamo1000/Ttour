@@ -1,10 +1,12 @@
 
+import imp
 from urllib import response
 from database.db import mysql
 from flask import Flask, render_template, redirect,url_for,request,Blueprint, session, flash
 from datetime import timedelta
 from werkzeug.security import check_password_hash, generate_password_hash
 import bcrypt
+from datetime import datetime
 
 user=Blueprint("user",__name__)
 
@@ -32,12 +34,15 @@ def userlogin():
         cur=mysql.get_db().cursor()
         cur.execute(f"select * from user_1 where username ='{user_name}' and Password_user='{password}'")
         user = cur.fetchall()
-        if user is not None:
+        if user:
             session['name_user']=user_name
             session['id']= user[0][0]
-            
+            flash("Logged in success!", category="success")
             return redirect(url_for('user.userhome'))
-        return redirect(url_for('user.userhome'))
+        else: 
+            flash("User doesn't exist!", category="error")
+            return render_template("userlogin.html")
+        
 
 @user.route("/signup", methods = ["GET", "POST"])
 def signup():
@@ -88,6 +93,7 @@ def userinfo():
     user = cur.fetchall()
     cur.execute(f"select user_1.U_id,tour.T_id,O_id,Name_user,Name_Tour,order_tour.Price,Order_Date, order_tour.Amount_of_people, tour.Vehicle, tour.Name_Hotel, status_Order from order_tour inner join tour on tour.T_id=order_tour.T_id inner join user_1 on user_1.U_id=order_tour.U_id where user_1.u_id = {u_id}")
     booking = cur.fetchall()
+    print(booking)
     return render_template("userManageTour.html", user = user, booking = booking)
 
 
@@ -137,17 +143,44 @@ def userchangeinfo():
 @user.route("/usercanceltour/<O_id>",methods=['GET','POST'])
 def usercanceltour(O_id):
     O_id = O_id
+    print(O_id)
     cur = mysql.get_db().cursor()
-    cur.execute(f"update order_tour set status_Order = 2 where o_id={O_id}")
-    mysql.get_db().commit()
     if request.method == "GET":
+        U_id=session['id']
+        cur.execute(f"update order_tour set status_Order = 2 where o_id={O_id} and U_id={U_id}")
+        mysql.get_db().commit()
         return redirect(url_for('user.userinfo'))
+    return redirect(url_for('user.userinfo'))
     
 @user.route("/usersearch", methods = ['GET','POST'])
 def usersearch():
     keysearch = request.form['key_search']
     cur=mysql.get_db().cursor()
-    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM ttour.tour inner join place where name_tour like '%{keysearch}%' or place.name_place like '%{keysearch}%'")
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM ttour.tour inner join place where name_tour like '%{keysearch}%' or place.name_place like '%{keysearch}%' group by t_id")
     tour = cur.fetchall()
     return render_template("userSearch.html", tours = tour, keysearch = keysearch)
 
+@user.route("/userbooktour/<T_id>", methods = ['GET','POST'])
+def userbook(T_id):
+    T_id = T_id
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT * FROM tour where t_id={T_id}")
+    tour = cur.fetchall()
+    print(tour)
+    return render_template("userBookTour.html", tour = tour)
+
+@user.route("/userconfirmbooktour/<T_id>", methods = ['GET','POST'])
+def userconfirmbook(T_id):
+        u_id = session['id']
+        number_people = request.form["number_people"]
+        time_want_start = request.form["time_want_start"]
+        now = datetime.utcnow()
+        cur=mysql.get_db().cursor()
+        cur.execute(f"SELECT price FROM tour where t_id={T_id}")
+        prices = cur.fetchall()
+        price = prices[0][0]
+        print(price)
+        cur.execute("insert into order_tour(T_id, Order_date, u_id, Price, status_order, amount_of_people, time_start)values(3, '2022-05-15 10:00:00', 1, 2000, 0 ,3, '2022-05-15 10:00:00')" )
+        print("đã thêm order")
+        mysql.get_db().commit()
+        return redirect(url_for("user.userinfo"))

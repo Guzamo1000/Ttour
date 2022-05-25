@@ -97,7 +97,7 @@
                     {% for t in tour %}
                     <form action="" method="POST">
                     <div class="grid__column-3-10 tour__item">
-                        <a href="" class="tour__item-link">
+                        <a href="/usertourdetail/{{t[0]}}" class="tour__item-link">
                             <img src="../static/images/{{t[10]}}" alt="" class="tour__item-image">
                             <span class="tour__item-price">{{t[6]}} VND</span>
                             <p class="tour__item-desc">{{t[3]}}</p>

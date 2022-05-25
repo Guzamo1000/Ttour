@@ -9,15 +9,11 @@ from flaskext.mysql import MySQL
 
 
 app=Flask(__name__)
-UPLOAD_FOLDER='static/uploads/'
 app.config["SECRET_KEY"] = "ttour"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config["MYSQL_DATABASE_HOST"]='localhost'
 app.config["MYSQL_DATABASE_USER"]="root"
-app.config["MYSQL_DATABASE_PASSWORD"]="258000"
+app.config["MYSQL_DATABASE_PASSWORD"]="250201"
 app.config["MYSQL_DATABASE_DB"]='ttour'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 mysql.init_app(app)
 app.register_blueprint(admin)
