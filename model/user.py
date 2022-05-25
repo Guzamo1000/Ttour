@@ -91,9 +91,8 @@ def userinfo():
 
     cur.execute(f"SELECT * FROM user_1 where u_id = {u_id}")
     user = cur.fetchall()
-    cur.execute(f"select user_1.U_id,tour.T_id,O_id,Name_user,Name_Tour,order_tour.Price,Order_Date, order_tour.Amount_of_people, tour.Vehicle, tour.Name_Hotel, status_Order from order_tour inner join tour on tour.T_id=order_tour.T_id inner join user_1 on user_1.U_id=order_tour.U_id where user_1.u_id = {u_id}")
+    cur.execute(f"select user_1.U_id,tour.T_id,O_id,Name_user,Name_Tour,order_tour.Price,Order_Date, order_tour.Amount_of_people, tour.Vehicle, tour.Name_Hotel, status_Order from order_tour inner join tour on tour.T_id=order_tour.T_id inner join user_1 on user_1.U_id=order_tour.U_id where user_1.u_id = {u_id} order by order_tour.o_id desc")
     booking = cur.fetchall()
-    print(booking)
     return render_template("userManageTour.html", user = user, booking = booking)
 
 
@@ -180,7 +179,7 @@ def userconfirmbook(T_id):
         prices = cur.fetchall()
         price = prices[0][0]
         print(price)
-        cur.execute("insert into order_tour(T_id, Order_date, u_id, Price, status_order, amount_of_people, time_start)values(3, '2022-05-15 10:00:00', 1, 2000, 0 ,3, '2022-05-15 10:00:00')" )
+        cur.execute(f"insert into order_tour(T_id, Order_date, u_id, Price, status_order, amount_of_people, time_start)values({T_id}, '{now}', {u_id}, {price}, 0 ,{number_people}, '{time_want_start}')" )
         print("đã thêm order")
         mysql.get_db().commit()
         return redirect(url_for("user.userinfo"))
