@@ -122,7 +122,7 @@
                         </thead>
                         <tbody>
                             {%for b in booking%}
-                            <form action="/usercanceltour/{{b[2]}}" method="POST">
+                            
 
                                 <tr>
                                     <td>{{b[4]}}</td>
@@ -150,8 +150,7 @@
 
                                         {%if b[10] == 0%}
                                    
-                                                <a href="/usercanceltour/12" class="tour__item-link">
-                                                    {% print(b[2]) %}
+                                                <a href="/usercanceltour/{{b[2]}}" class="tour__item-link">
                                                     <button>
                                                         Hủy
                                                     </button>
@@ -161,7 +160,7 @@
 
                                     </td>
                                 </tr>
-                            </from>
+                            
                             {%endfor%}
                             <!-- <tr>
                                 <td>Du lịch sapa</td>

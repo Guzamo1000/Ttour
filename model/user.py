@@ -55,15 +55,15 @@ def signup():
         nameuser = request.form["nameuser"]
         address_user = request.form["address_user"]
         phone_number_user = request.form["phone_number_user"]
-        has_password = bcrypt.hashpw(password_user, bcrypt.gensalt())
+        # has_password = bcrypt.hashpw(password_user, bcrypt.gensalt())
         
         cur=mysql.get_db().cursor()
         
-        cur.execute("insert into user_1 (username, has_password, name_user, address_user, Number_Phone_User) values (%s, %s,%s,%s, %s)",(username,password_user,nameuser,address_user,phone_number_user))
+        cur.execute("insert into user_1 (username, password_user, name_user, address_user, Number_Phone_User) values (%s, %s,%s,%s, %s)",(username,password_user,nameuser,address_user,phone_number_user))
         mysql.get_db().commit()
         session['name_user'] = nameuser
         session['user_name'] = username
-        return redirect(url_for("user.userhome"))
+        return redirect(url_for("user.userlogin"))
         
 
 @user.route("/userlogout")
@@ -72,7 +72,7 @@ def userlogout():
     logout account user
     Remove user account from session and return function userlogin
     """
-    session.pop('user',None)
+    session.clear()
     return redirect(url_for("user.userlogin"))
 
 @user.route("/readattracttour")
