@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page T.Travel</title>
+    <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.0.0-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/main.css">
     <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/userBlog.css">
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script defer src="../static/javascripts/a.js"></script>
 </head>
+
+
 
 <body>
     <!-- Thanh heading -->
+    {% block content %} {% endblock %}
     <div class="app">
         <header id="header">
             <div class="grid">
@@ -52,15 +58,24 @@
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
                                     <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
+                                    {% if session['name_user'] %}
+                                    <p>{{session['name_user']}}</p>
+                                    {% else %}
+                                    <p>Chưa đăng nhập</p>
+                                    {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
-                                    <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                    <li href="/userinfo" class="header__navbar-user-item">
+                                        <a href="/userinfo" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Thông tin</button>
+                                        </a>
                                     </li>
-                                    <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                    <li href ="/logout"class="header__navbar-user-item">
+                                        <a href="/userlogout" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng xuất</button>
+                                        </a>
                                     </li>
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -68,6 +83,27 @@
                 </div>
             </div>
         </header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for cat, mess in messages %}
+                    {% if cat == "error" %}
+                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ mess }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <!-- Thông tin màu xanh cuối trang -->
         <footer>
             <div class="footer-link__wrapper">
@@ -105,92 +141,31 @@
             </div>
         </footer>
     </div>
+    <!-- Giao diện đăng nhập - đăng ký -->
     <div class="modal js-modal">
-        <div class="modal__body">
-            <div class="auth__form login-form">
-                <h3 class="auth-form__title">Đăng nhập bằng</h3>
-                <div class="auth-form__social">
-                    <a href="https://youtube.com" class="auth-form__link"><i
-                            class="auth-form__icon fa-brands fa-facebook-square"></i></a>
-
-                    <a href="" class="auth-form__link"><i class="auth-form__icon fa-brands fa-google"></i></a>
-                </div>
-                <div class="auth-form__select">
-                    hoặc
-                </div>
-                <div class="auth-form__info-input">
-                    <span class="auth-form__label">Email</span>
-                    <input type="email" class="auth-form__input" placeholder="Email">
-                    <span class="auth-form__label">Mật khẩu</span>
-                    <input type="password" class="auth-form__input" placeholder="Mật khẩu">
-                </div>
-                <div class="auth-form__support">
-                    <a href="" class="auth-form__support-link">Quên mật khẩu?</a>
-                </div>
-                <button class="auth-form__button">ĐĂNG NHẬP</button>
-            </div>
-            <div class="auth__form register-form">
-                <h3 class="auth-form__title">Đăng ký bằng</h3>
-                <div class="auth-form__social">
-                    <a href="https://youtube.com" class="auth-form__link"><i
-                            class="auth-form__icon fa-brands fa-facebook-square"></i></a>
-
-                    <a href="" class="auth-form__link"><i class="auth-form__icon fa-brands fa-google"></i></a>
-                </div>
-                <div class="auth-form__select">
-                    hoặc
-                </div>
-                <div class="auth-form__form">
-                    <span class="auth-form__label">Tên</span>
-                    <input type="email" class="auth-form__input" placeholder="Tên">
-                    <span class="auth-form__label">Email</span>
-                    <input type="email" class="auth-form__input" placeholder="Email">
-                    <span class="auth-form__label">Mật khẩu</span>
-                    <input type="password" class="auth-form__input" placeholder="Mật khẩu">
-                    <span class="auth-form__label">Xác nhận mật khẩu</span>
-                    <input type="email" class="auth-form__input" placeholder="Xác nhận mật khẩu">
-                    <div class="auth-form__agreement">
-                        <input type="checkbox" required>
-                        <span class="auth-form__label">Đồng ý tất cả chính sách</span>
-                    </div>
-                </div>
-                <button class="auth-form__button">ĐĂNG KÝ</button>
-            </div>
-        </div>
-        <div class="modal__body--left header-menu-form header-menu-disabled">
+        <div class="modal__body--left header-menu-form">
             <div class="header__menu">
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userhome" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userinfo" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Thông tin</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/tour" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-location-dot"></i>
                             <span class="header__menu-item-text">Tour</span>
                         </a>
                     </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-file-lines"></i>
-                            <span class="header__menu-item-text">Blog</span>
-                        </a>
-                    </li>
+                   
                     <li class="header__menu-item">
                         <a href="" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-circle-question"></i>
@@ -203,45 +178,23 @@
     </div>
     <script>
         const modal = document.querySelector('.js-modal');
-        const loginContainer = document.querySelector('.login-form');
-        const registerContainer = document.querySelector('.register-form');
         const menuContainer = document.querySelector('.header-menu-form');
         const menuButton = document.querySelector('.js-header-button');
-        const loginButton = document.querySelector('.js-login-button');
-        const registerButton = document.querySelector('.js-register-button');
         function openMenu() {
             modal.classList.add('open');
             menuContainer.classList.add('open');
         }
-        function openLogin() {
-            modal.classList.add('open');
-            loginContainer.classList.add('open');
-        }
-        function openRegister() {
-            modal.classList.add('open');
-            registerContainer.classList.add('open');
-        }
         function closeModal() {
             modal.classList.remove('open');
             menuContainer.classList.remove('open');
-            loginContainer.classList.remove('open');
-            registerContainer.classList.remove('open');
         }
         menuButton.addEventListener('click', openMenu);
-        loginButton.addEventListener('click', openLogin);
-        registerButton.addEventListener('click', openRegister);
-
         modal.addEventListener('click', closeModal);
-        loginContainer.addEventListener('click', function (event) {
-            event.stopPropagation();
-        });
-        registerContainer.addEventListener('click', function (event) {
-            event.stopPropagation();
-        });
         menuContainer.addEventListener('click', function (event) {
             event.stopPropagation();
         });
     </script>
+
 </body>
 
 </html>

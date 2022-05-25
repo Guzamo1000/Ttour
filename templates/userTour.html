@@ -46,14 +46,22 @@
                             <div class="header__navbar-user">
                                 <div class="header__navbar-title">
                                     <i class="header__icon fa-solid fa-user"></i>
-                                    Tài khoản
+                                    {% if session['name_user'] %}
+                                    <p>{{session['name_user']}}</p>
+                                    {% else %}
+                                    <p>Chưa đăng nhập</p>
+                                    {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
                                     <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-register-button">Đăng ký</button>
+                                        <a href="/userinfo" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Thông tin</button>
+                                        </a>
                                     </li>
                                     <li class="header__navbar-user-item">
-                                        <button class="header__navbar-button js-login-button">Đăng nhập</button>
+                                        <a href="/userlogout" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng xuất</button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -86,6 +94,35 @@
                     Bạn đã sẵn sàng tham gia cùng chúng tôi ?
                 </h4>
                 <div class="grid__row mb-36">
+                    {% for t in tour %}
+                    <form action="" method="POST">
+                    <div class="grid__column-3-10 tour__item">
+                        <a href="/usertourdetail/{{t[0]}}" class="tour__item-link">
+                            <img src="../static/images/{{t[10]}}" alt="" class="tour__item-image">
+                            <span class="tour__item-price">{{t[6]}} VND</span>
+                            <p class="tour__item-desc">{{t[3]}}</p>
+                        </a>
+                    </div>
+                    </form>
+                    {% endfor %}
+                    <!-- <div class="grid__column-3 tour__item">
+                        <a href="" class="tour__item-link">
+                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                            <span class="tour__item-price">1.499.000 VND</span>
+                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                                Landmark 81</p>
+                        </a>
+                    </div>
+                    <div class="grid__column-3 tour__item">
+                        <a href="" class="tour__item-link">
+                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
+                            <span class="tour__item-price">1.499.000 VND</span>
+                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
+                                Landmark 81</p>
+                        </a>
+                    </div> -->
+                </div>
+                <!-- <div class="grid__row mb-36">
                     <div class="grid__column-3 tour__item">
                         <a href="" class="tour__item-link">
                             <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
@@ -136,34 +173,8 @@
                                 Landmark 81</p>
                         </a>
                     </div>
-                </div>
-                <div class="grid__row mb-36">
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                    <div class="grid__column-3 tour__item">
-                        <a href="" class="tour__item-link">
-                            <img src="../static/images/landmark.jpg" alt="" class="tour__item-image">
-                            <span class="tour__item-price">1.499.000 VND</span>
-                            <p class="tour__item-desc">Combo du lịch, trải nghiệm đài quan sát SkyView tại Vincom Center
-                                Landmark 81</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid__row">
+                </div> -->
+                <!-- <div class="grid__row">
                     <div class="user-base__pagination">
                         <div class="user-base__pagination-label">
                             <span class="user-base__pagination-title">Tổng số:</span>
@@ -189,7 +200,7 @@
                           </ul>
                         </nav>                  
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -235,21 +246,15 @@
                 <div class="header__menu-title">T.Travel</div>
                 <ul class="header__menu-list">
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userhome" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-house"></i>
                             <span class="header__menu-item-text">Trang chủ</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
+                        <a href="/userinfo" class="header__menu-link">
                             <i class="header__menu-icon fa-solid fa-user"></i>
                             <span class="header__menu-item-text">Thông tin</span>
-                        </a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="" class="header__menu-link">
-                            <i class="header__menu-icon fa-solid fa-ticket-simple"></i>
-                            <span class="header__menu-item-text">Đặt trước</span>
                         </a>
                     </li>
                     <li class="header__menu-item">
