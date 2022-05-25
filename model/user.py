@@ -103,6 +103,48 @@ def usertour():
     tour = cur.fetchall()
     return render_template("userTour.html", tour = tour)
 
+@user.route("/tourkhanhhoa",methods=['GET','POST'])
+def userkhanhhoa():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id where place.name_place = 'Khanh Hoa' group by t_id")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
+@user.route("/tourlaocai",methods=['GET','POST'])
+def userlaocai():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id where place.name_place = 'Lao Cai' group by t_id")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
+@user.route("/tourmoinhat",methods=['GET','POST'])
+def usermoinhat():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id group by t_id order by T_id desc")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
+@user.route("/tourquangninh",methods=['GET','POST'])
+def userquangninh():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id where place.name_place = 'Quang Ninh' group by t_id")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
+@user.route("/tourgiatang",methods=['GET','POST'])
+def usergiatang():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id group by t_id order by T_id")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
+@user.route("/tourgiagiam",methods=['GET','POST'])
+def usergiagiam():
+    cur = mysql.get_db().cursor()
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM tour inner join place on tour.p_id = place.p_id group by t_id order by T_id DESC")
+    tour = cur.fetchall()
+    return render_template("userTour.html", tour = tour)
+
 @user.route("/attracttour",methods=['GET','POST'])
 def userattracttour():
     cur = mysql.get_db().cursor()
@@ -155,7 +197,7 @@ def usercanceltour(O_id):
 def usersearch():
     keysearch = request.form['key_search']
     cur=mysql.get_db().cursor()
-    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM ttour.tour inner join place where name_tour like '%{keysearch}%' or place.name_place like '%{keysearch}%' group by t_id")
+    cur.execute(f"SELECT t_id, place.p_id, a_id, name_tour, name_hotel, vehicle, price, Describe_Tour, Schedule_Tour, Time_tour, Image_1, Image_2,Image_3, Image_4, Image_5 FROM ttour.tour inner join place on tour.p_id = place.p_id where name_tour like '%{keysearch}%' or place.name_place like '%{keysearch}%' group by t_id")
     tour = cur.fetchall()
     return render_template("userSearch.html", tours = tour, keysearch = keysearch)
 

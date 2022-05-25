@@ -53,16 +53,29 @@
                                     {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
-                                    <li class="header__navbar-user-item">
+                                    {% if session['name_user'] %}
+                                    <li href="/userinfo" class="header__navbar-user-item">
                                         <a href="/userinfo" class="header__menu-link">
                                             <button class="header__navbar-button js-register-button">Thông tin</button>
                                         </a>
                                     </li>
-                                    <li class="header__navbar-user-item">
+                                    <li href ="/logout"class="header__navbar-user-item">
                                         <a href="/userlogout" class="header__menu-link">
                                             <button class="header__navbar-button js-login-button">Đăng xuất</button>
                                         </a>
                                     </li>
+                                    {% else %}
+                                    <li href="/userinfo" class="header__navbar-user-item">
+                                        <a href="/userlogin" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Đăng nhập</button>
+                                        </a>
+                                    </li>
+                                    <li href ="/logout"class="header__navbar-user-item">
+                                        <a href="/signup" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng ký</button>
+                                        </a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </li>
@@ -79,10 +92,18 @@
                 </div>
             </div>
             <ul class="search__suggest">
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Thành Phố Hồ Chí Minh</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
-                <li class="search__suggest-item"><a href="" class="search__suggest-link">Đà Nẵng</a></li>
+                <a href="/tourkhanhhoa" class="tour__item-link">
+                    <li class="search__suggest-item"><a href="/tourkhanhhoa" class="search__suggest-link">Khánh Hòa</a></li>
+                </a>
+                <a href="/tourlaocai" class="tour__item-link">
+                <li class="search__suggest-item"><a href="/tourlaocai" class="search__suggest-link">Lào Cai</a></li>
+                </a>
+                <a href="/tourquangninh" class="tour__item-link">
+                <li class="search__suggest-item"><a href="/tourquangninh" class="search__suggest-link">Quảng Ninh</a></li>
+                </a>
+                <a href="/tourmoinhat" class="tour__item-link">
+                <li class="search__suggest-item"><a href="/tourmoinhat" class="search__suggest-link">Mới nhất</a></li>
+                </a>
             </ul>
         </div>
         <div class="content mt-128">

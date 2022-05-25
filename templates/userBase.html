@@ -65,6 +65,7 @@
                                     {% endif%}
                                 </div>
                                 <ul class="header__navbar-user-list">
+                                    {% if session['name_user'] %}
                                     <li href="/userinfo" class="header__navbar-user-item">
                                         <a href="/userinfo" class="header__menu-link">
                                             <button class="header__navbar-button js-register-button">Thông tin</button>
@@ -75,7 +76,18 @@
                                             <button class="header__navbar-button js-login-button">Đăng xuất</button>
                                         </a>
                                     </li>
-                                    
+                                    {% else %}
+                                    <li href="/userinfo" class="header__navbar-user-item">
+                                        <a href="/userlogin" class="header__menu-link">
+                                            <button class="header__navbar-button js-register-button">Đăng nhập</button>
+                                        </a>
+                                    </li>
+                                    <li href ="/logout"class="header__navbar-user-item">
+                                        <a href="/signup" class="header__menu-link">
+                                            <button class="header__navbar-button js-login-button">Đăng ký</button>
+                                        </a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </li>
