@@ -85,6 +85,7 @@ def readattract():
 
 @user.route("/userinfo",methods=['GET','POST'])
 def userinfo():
+    
     cur = mysql.get_db().cursor()
     u_id = session["id"]
 
@@ -168,10 +169,11 @@ def userchangeinfo():
         cur = mysql.get_db().cursor()
         u_id = session["id"]
         name_user=request.form['name_user']
-        user_name=request.form['user_name']
+        print(name_user)
+        # user_name=request.form['user_name']
         phone_number = request.form['phone_number']
         user_address = request.form['user_address']
-        cur.execute(f"update user_1 set username = '{user_name}', name_user = '{name_user}', address_user = '{user_address}', number_phone_user = '{phone_number}' where u_id = {u_id}")
+        cur.execute(f"update user_1 set name_user = '{name_user}', address_user = '{user_address}', number_phone_user = '{phone_number}' where u_id = {u_id}")
         user = cur.fetchall()
         mysql.get_db().commit()
         # if user is not None:
@@ -179,7 +181,7 @@ def userchangeinfo():
         #     session['id']= user[0][0]
             
         #     return redirect(url_for('user.userhome'))
-        return redirect(url_for('user.userhome'))
+        return redirect(url_for('user.userinfo'))
 
 @user.route("/usercanceltour/<O_id>",methods=['GET','POST'])
 def usercanceltour(O_id):

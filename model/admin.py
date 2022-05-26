@@ -15,7 +15,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 @admin.route("/admin")
 @admin.route("/adminbooking", methods=['GET', 'POST'])
 def booktour():
-    if "id" in session:
+    if "admin" in session:
         cur = mysql.get_db().cursor()
         cur.execute("select user_1.U_id,tour.T_id,O_id,Name_user,Name_Tour,order_tour.Price,Order_Date,status_Order from order_tour inner join tour on tour.T_id=order_tour.T_id inner join user_1 on user_1.U_id=order_tour.U_id")
         booking = cur.fetchall()
