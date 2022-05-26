@@ -1,6 +1,6 @@
 .tour-detail__info{
     margin-top:128px;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content:space-between;
     margin-bottom: 32px;
@@ -215,5 +215,4 @@
 	animation: none !important;
 	color: #ffab00 !important ;
 }
-
 

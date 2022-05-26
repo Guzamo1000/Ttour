@@ -66,6 +66,9 @@
 .admin-manage__info-item{
     margin-bottom: 32px;
 }
+.admin-manage__info-label{
+    min-width: 40px;
+}
 .admin-manage__action{
     display:flex;
 }
@@ -94,4 +97,8 @@
     border:1px solid #ccc;
     padding: 8px 8px 8px 16px;
     border-radius:10px;
+}
+.admin-manage__info-img{
+    width:386px;
+    height:284px;
 }

@@ -66,7 +66,7 @@
                         <div class="header__navbar-user">
                             <div class="header__navbar-title">
                                 <i class="header__icon fa-solid fa-user"></i>
-                                    {{nameadmin}}
+                                {{nameadmin}}
                             </div>
                             <ul class="header__navbar-user-list">
                                 <li class="header__navbar-user-item">
@@ -132,64 +132,63 @@
                 <h3 class="admin-manage__detail-title">Thông tin chi tiết khách đặt tour</h3>
                 <div class="admin-manage__info">
                     <form action="/adminuser" method="POST">
-
-
                         <div class="admin-manage__info-item-wrapper">
-                            <div class="admin-manage__info-item">
-                                ID:<input type="text" name="U_id" id="U_id"><br><br>
+                            <div class="admin-manage__info-item mb-4">
+                                <label for="U_id" class="admin-manage__info-label">ID:</label>
+                                <input type="text" name="U_id" id="U_id">
                             </div>
-                            <div class="admin-manage__info-item">
+                            <div class="admin-manage__info-item mb-4">
                                 <!-- <span class="admin-manage__info-title">Họ tên:</span>
                             <span class="admin-manage__info-content" id="name" id="name"></span> -->
-                                Name:<input type="text" name="name" id="name"><br><br>
+                                <label for="name" class="admin-manage__info-label">Tên:</label>
+                                <input type="text" name="name" id="name">
                             </div>
-                            <div class="admin-manage__info-item">
+                            <div class="admin-manage__info-item mb-4">
                                 <!-- <span class="admin-manage__info-title">Địa chỉ:</span>
                             <span class="admin-manage__info-content" id="address" name="address"></span> -->
-                                Address:</Address>:<input type="text" name="address" id="address"><br><br>
+                                <label for="address" class="admin-manage__info-label">Địa chỉ:</label>
+                                <input type="text" name="address" id="address">
                             </div>
-                            <div class="admin-manage__info-item">
+                            <div class="admin-manage__info-item mb-4">
                                 <!-- <span class="admin-manage__info-title">SĐT:</span>
                             <span class="admin-manage__info-content" id="numberphone" name="numberphone"></span> -->
-                                SĐT:<input type="text" name="numberphone" id="numberphone"><br><br>
+                                <label for="numberphone" class="admin-manage__info-label">SĐT:</label>
+                                <input type="text" name="numberphone" id="numberphone">
                             </div>
-
                         </div>
-                        <button type="submit" class="admin-manage__action-button">Xác nhận</button>
-                        <table class="table table-striped table-inverse table-responsive text-justify">
-                            <thead class="thead-inverse thead-dark text-white">
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Tour</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Số thành viên</th>
-                                    <!-- <th>Liên hệ</th> -->
-                                    <th>Thành tiền</th>
-                                    <th>Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {%if history!=none%}
-                                {% for hist in history %}
-                                <tr>
-                                    <td>{{hist[1]}}</td>
-                                    <td>{{hist[2]}}</td>
-                                    <td>{{hist[3]}}</td>
-                                    <td>{{hist[4]}}</td>
-                                    <td>{{hist[5]}}</td>
-                                    <td>{{hist[6]}}</td>
-                                    <!-- <td>3.000.000</td> -->
-                                </tr>
-                                {%endfor%}
-                                {%endif%}
-                                {%if history==none%}
-                                    <td>Khách hàng này chưa đặt tour nào :(((</td>
-                                {%endif%}
-                            </tbody>
-                        </table>
+                        
+                        <button type="submit" class="btn btn-danger">Xác nhận</button>
                     </form>
                 </div>
-
+                <table class="table table-striped table-inverse text-justify" style="width: 100%;">
+                    <thead class="thead-inverse thead-dark text-white">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tour</th>
+                            <th>Ngày</th>
+                            <th>Số thành viên</th>
+                            <!-- <th>Liên hệ</th> -->
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%if history!=none%}
+                        {% for hist in history %}
+                        <tr>
+                            <td>{{hist[0]}}</td>
+                            <td>{{hist[1]}}</td>
+                            <td>{{hist[2]}}</td>
+                            <td>{{hist[3]}}</td>
+                            <td>{{hist[4]}}</td>
+                            <!-- <td>3.000.000</td> -->
+                        </tr>
+                        {%endfor%}
+                        {%endif%}
+                        {%if history==none%}
+                        <td>Khách hàng này chưa đặt tour nào :(((</td>
+                        {%endif%}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -312,11 +311,11 @@
         for (var i = 0; i <= table.rows.length; i++) {
             table.rows[i].onclick = function () {
                 //rIndex = this.rowIndex; 
-                document.getElementById("U_id").value=this.cells[0].innerHTML;
+                document.getElementById("U_id").value = this.cells[0].innerHTML;
                 document.getElementById("name").value = this.cells[1].innerHTML;
                 document.getElementById("address").value = this.cells[2].innerHTML;
                 document.getElementById("numberphone").value = this.cells[3].innerHTML;
-               
+
             };
         }
     </script>
